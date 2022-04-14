@@ -383,6 +383,9 @@ PRODUCT_PACKAGE_OVERLAYS += \
     $(COMMON_PATH)/overlay \
     $(COMMON_PATH)/overlay-lineage \
 
+PRODUCT_PACKAGES += \
+    CarrierConfigOverlay
+
 # Performance
 PRODUCT_PACKAGES += \
     libqti-perfd-client \
