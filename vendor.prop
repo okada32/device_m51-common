@@ -164,6 +164,7 @@ vendor.hw.fm.init=0
 # Fastbootd
 ro.fastbootd.available=true
 
+<<<<<<< HEAD
 # FRP
 ro.frp.pst=/dev/block/persistent
 
@@ -240,3 +241,6 @@ wifi.aware.interface=wifi-aware0
 
 # Zygote
 zygote.critical_window.minute=10
+
+# RCS
+persist.vendor.rcs.singlereg.feature=1
