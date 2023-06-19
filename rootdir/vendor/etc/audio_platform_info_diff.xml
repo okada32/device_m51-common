@@ -39,6 +39,7 @@
         <device name="SND_DEVICE_OUT_WIFI_CALL_DEX_SPEAKER_EVS" acdb_id="15"/>
         <device name="SND_DEVICE_OUT_VOIP_COMM_SPEAKER" acdb_id="15"/>
         <device name="SND_DEVICE_OUT_VOIP_COMM_DEX_SPEAKER" acdb_id="15"/>
+        <device name="SND_DEVICE_OUT_VOIP_COMM_TV_SPEAKER" acdb_id="15"/>
         <device name="SND_DEVICE_OUT_VOIP_FMC_SPEAKER" acdb_id="15"/>
         <device name="SND_DEVICE_OUT_VOIP_FMC_DEX_SPEAKER" acdb_id="15"/>
         <device name="SND_DEVICE_OUT_FM_SPEAKER" acdb_id="15"/>
@@ -49,9 +50,129 @@
     </acdb_ids>
 
     <backend_names>
+
+        <device name="SND_DEVICE_OUT_HANDSET" interface="RX_CDC_DMA_RX_0"/>
+        <device name="SND_DEVICE_OUT_CALL_HANDSET" interface="RX_CDC_DMA_RX_0"/>
+        <device name="SND_DEVICE_OUT_CALL_HANDSET_EVS" interface="RX_CDC_DMA_RX_0"/>
+        <device name="SND_DEVICE_OUT_CALL_HANDSET_HAC" interface="RX_CDC_DMA_RX_0"/>
+        <device name="SND_DEVICE_OUT_CALL_HANDSET_HAC_EVS" interface="RX_CDC_DMA_RX_0"/>
+        <device name="SND_DEVICE_OUT_CALL_HANDSET_EX" interface="RX_CDC_DMA_RX_0"/>
+        <device name="SND_DEVICE_OUT_CALL_HANDSET_EX_EVS" interface="RX_CDC_DMA_RX_0"/>
+        <device name="SND_DEVICE_OUT_WIFI_CALL_HANDSET" interface="RX_CDC_DMA_RX_0"/>
+        <device name="SND_DEVICE_OUT_WIFI_CALL_HANDSET_EVS" interface="RX_CDC_DMA_RX_0"/>
+        <device name="SND_DEVICE_OUT_WIFI_CALL_HANDSET_EX" interface="RX_CDC_DMA_RX_0"/>
+        <device name="SND_DEVICE_OUT_WIFI_CALL_HANDSET_EX_EVS" interface="RX_CDC_DMA_RX_0"/>
+        <device name="SND_DEVICE_OUT_WIFI_CALL_HANDSET_HAC" interface="RX_CDC_DMA_RX_0"/>
+        <device name="SND_DEVICE_OUT_WIFI_CALL_HANDSET_HAC_EVS" interface="RX_CDC_DMA_RX_0"/>
+        <device name="SND_DEVICE_OUT_CALL_TTY_HANDSET" interface="RX_CDC_DMA_RX_0"/>
+        <device name="SND_DEVICE_OUT_CALL_TTY_HANDSET_EX" interface="RX_CDC_DMA_RX_0"/>
+        <device name="SND_DEVICE_OUT_WIFI_CALL_TTY_HANDSET" interface="RX_CDC_DMA_RX_0"/>
+        <device name="SND_DEVICE_OUT_WIFI_CALL_TTY_HANDSET_EX" interface="RX_CDC_DMA_RX_0"/>
+        <device name="SND_DEVICE_OUT_VOIP_COMM_HANDSET" interface="RX_CDC_DMA_RX_0"/>
+        <device name="SND_DEVICE_OUT_VOIP_COMM_HANDSET_HAC" interface="RX_CDC_DMA_RX_0"/>
+        <device name="SND_DEVICE_OUT_VOIP_FMC_HANDSET" interface="RX_CDC_DMA_RX_0"/>
+        <device name="SND_DEVICE_OUT_VOIP_FMC_HANDSET_HAC" interface="RX_CDC_DMA_RX_0"/>
+        <device name="SND_DEVICE_OUT_LOOPBACK_HANDSET" interface="RX_CDC_DMA_RX_0"/>
+        <device name="SND_DEVICE_OUT_LOOPBACK_HANDSET_DUAL_MIC" interface="RX_CDC_DMA_RX_0"/>
+
+        <device name="SND_DEVICE_OUT_SPEAKER" backend="speaker" interface="SEC_MI2S_RX"/>
+        <device name="SND_DEVICE_OUT_SPEAKER_CALIBRATION" backend="speaker" interface="SEC_MI2S_RX"/>
+        <device name="SND_DEVICE_OUT_SPEAKER2" backend="speaker" interface="SEC_MI2S_RX"/>
+        <device name="SND_DEVICE_OUT_CALL_SPEAKER" backend="speaker" interface="SEC_MI2S_RX"/>
+        <device name="SND_DEVICE_OUT_CALL_SPEAKER_EVS" backend="speaker" interface="SEC_MI2S_RX"/>
+        <device name="SND_DEVICE_OUT_CALL_SPEAKER_EX" backend="speaker" interface="SEC_MI2S_RX"/>
+        <device name="SND_DEVICE_OUT_CALL_SPEAKER_EX_EVS" backend="speaker" interface="SEC_MI2S_RX"/>
+        <device name="SND_DEVICE_OUT_CALL_DEX_SPEAKER" backend="speaker" interface="SEC_MI2S_RX"/>
+        <device name="SND_DEVICE_OUT_CALL_DEX_SPEAKER_EVS" backend="speaker" interface="SEC_MI2S_RX"/>
+        <device name="SND_DEVICE_OUT_WIFI_CALL_SPEAKER" backend="speaker" interface="SEC_MI2S_RX"/>
+        <device name="SND_DEVICE_OUT_WIFI_CALL_SPEAKER_EVS" backend="speaker" interface="SEC_MI2S_RX"/>
+        <device name="SND_DEVICE_OUT_WIFI_CALL_SPEAKER_EX" backend="speaker" interface="SEC_MI2S_RX"/>
+        <device name="SND_DEVICE_OUT_WIFI_CALL_SPEAKER_EX_EVS" backend="speaker" interface="SEC_MI2S_RX"/>
+        <device name="SND_DEVICE_OUT_WIFI_CALL_DEX_SPEAKER" backend="speaker" interface="SEC_MI2S_RX"/>
+        <device name="SND_DEVICE_OUT_WIFI_CALL_DEX_SPEAKER_EVS" backend="speaker" interface="SEC_MI2S_RX"/>
+        <device name="SND_DEVICE_OUT_VOIP_COMM_SPEAKER" backend="speaker" interface="SEC_MI2S_RX"/>
+        <device name="SND_DEVICE_OUT_VOIP_COMM_DEX_SPEAKER" backend="speaker" interface="SEC_MI2S_RX"/>
+        <device name="SND_DEVICE_OUT_VOIP_COMM_TV_SPEAKER" backend="speaker" interface="SEC_MI2S_RX"/>
+        <device name="SND_DEVICE_OUT_VOIP_FMC_SPEAKER" backend="speaker" interface="SEC_MI2S_RX"/>
+        <device name="SND_DEVICE_OUT_VOIP_FMC_DEX_SPEAKER" backend="speaker" interface="SEC_MI2S_RX"/>
+        <device name="SND_DEVICE_OUT_LOOPBACK_SPEAKER" backend="speaker" interface="SEC_MI2S_RX"/>
+        <device name="SND_DEVICE_OUT_LOOPBACK_SPEAKER2" backend="speaker" interface="SEC_MI2S_RX"/>
+        <device name="SND_DEVICE_OUT_FM_SPEAKER" backend="speaker" interface="SEC_MI2S_RX"/>
+        <device name="SND_DEVICE_OUT_SPEAKER_KARAOKE" backend="speaker" interface="SEC_MI2S_RX"/>
+        <device name="SND_DEVICE_OUT_SPEAKER_PROTECTED" interface="SEC_MI2S_RX"/>
+        <device name="SND_DEVICE_OUT_SPEAKER_VBAT" backend="speaker" interface="SEC_MI2S_RX"/>
+        <device name="SND_DEVICE_OUT_SPEAKER_PROTECTED_VBAT" interface="SEC_MI2S_RX"/>
+
+        <device name="SND_DEVICE_OUT_HEADPHONES" backend="headphones" interface="RX_CDC_DMA_RX_0"/>
+        <device name="SND_DEVICE_OUT_CALL_HEADSET" backend="headphones" interface="RX_CDC_DMA_RX_0"/>
+        <device name="SND_DEVICE_OUT_CALL_HEADSET_EVS" backend="headphones" interface="RX_CDC_DMA_RX_0"/>
+        <device name="SND_DEVICE_OUT_WIFI_CALL_HEADSET" backend="headphones" interface="RX_CDC_DMA_RX_0"/>
+        <device name="SND_DEVICE_OUT_WIFI_CALL_HEADSET_EVS" backend="headphones" interface="RX_CDC_DMA_RX_0"/>
+        <device name="SND_DEVICE_OUT_CALL_TTY_HEADSET" backend="headphones" interface="RX_CDC_DMA_RX_0"/>
+        <device name="SND_DEVICE_OUT_CALL_TTY_FULL" backend="headphones" interface="RX_CDC_DMA_RX_0"/>
+        <device name="SND_DEVICE_OUT_WIFI_CALL_TTY_HEADSET" backend="headphones" interface="RX_CDC_DMA_RX_0"/>
+        <device name="SND_DEVICE_OUT_WIFI_CALL_TTY_FULL" backend="headphones" interface="RX_CDC_DMA_RX_0"/>
+        <device name="SND_DEVICE_OUT_VOIP_COMM_HEADSET" backend="headphones" interface="RX_CDC_DMA_RX_0"/>
+        <device name="SND_DEVICE_OUT_VOIP_FMC_HEADSET" backend="headphones" interface="RX_CDC_DMA_RX_0"/>
+        <device name="SND_DEVICE_OUT_LOOPBACK_HEADSET" backend="headphones" interface="RX_CDC_DMA_RX_0"/>
+        <device name="SND_DEVICE_OUT_LOOPBACK_HEADSET_DUAL_MIC" backend="headphones" interface="RX_CDC_DMA_RX_0"/>
+        <device name="SND_DEVICE_OUT_FM_HEADSET" backend="headphones" interface="RX_CDC_DMA_RX_0"/>
+        <device name="SND_DEVICE_OUT_HEADSET_KARAOKE" backend="headphones" interface="RX_CDC_DMA_RX_0"/>
+        <device name="SND_DEVICE_OUT_HEADPHONES_KARAOKE" backend="headphones" interface="RX_CDC_DMA_RX_0"/>
+
+        <device name="SND_DEVICE_OUT_SPEAKER_AND_HEADPHONES" backend="speaker-and-headphones" interface="SEC_MI2S_RX-and-RX_CDC_DMA_RX_0"/>
+
+        <device name="SND_DEVICE_OUT_VOICE_CALL_FORWARD" interface="RX_CDC_DMA_RX_0"/>
         <device name="SND_DEVICE_OUT_BT_A2DP" backend="bt-a2dp" interface="SLIMBUS_7_RX"/>
-        <device name="SND_DEVICE_OUT_SPEAKER_AND_BT_A2DP" backend="speaker-and-bt-a2dp" interface="WSA_CDC_DMA_RX_0-and-SLIMBUS_7_RX"/>
+        <device name="SND_DEVICE_OUT_SPEAKER_AND_BT_A2DP" backend="speaker-and-bt-a2dp" interface="SEC_MI2S_RX-and-SLIMBUS_7_RX"/>
+
+
+        <device name="SND_DEVICE_IN_REC_HEADSET_MIC" interface=""/>
+        <device name="SND_DEVICE_IN_REC_HEADSET_MIC_JAM" interface=""/>
+        <device name="SND_DEVICE_IN_VR_HEADSET_MIC" interface=""/>
+        <device name="SND_DEVICE_IN_BARGEIN1_HEADPHONE_MIC" interface=""/>
+        <device name="SND_DEVICE_IN_BARGEIN1_HEADSET_MIC" interface=""/>
+        <device name="SND_DEVICE_IN_BARGEIN2_HEADPHONE_MIC" interface=""/>
+        <device name="SND_DEVICE_IN_BARGEIN2_HEADSET_MIC" interface=""/>
+        <device name="SND_DEVICE_IN_CALL_HEADPHONE_MIC" interface=""/>
+        <device name="SND_DEVICE_IN_CALL_HEADPHONE_MIC_EVS" interface=""/>
+        <device name="SND_DEVICE_IN_CALL_HEADSET_MIC" interface=""/>
+        <device name="SND_DEVICE_IN_CALL_HEADSET_MIC_EVS" interface=""/>
+        <device name="SND_DEVICE_IN_CALL_USB_HEADPHONE_MIC" interface=""/>
+        <device name="SND_DEVICE_IN_CALL_USB_HEADPHONE_MIC_EVS" interface=""/>
+        <device name="SND_DEVICE_IN_WIFI_CALL_HEADPHONE_MIC" interface=""/>
+        <device name="SND_DEVICE_IN_WIFI_CALL_HEADPHONE_MIC_EVS" interface=""/>
+        <device name="SND_DEVICE_IN_WIFI_CALL_HEADSET_MIC" interface=""/>
+        <device name="SND_DEVICE_IN_WIFI_CALL_HEADSET_MIC_EVS" interface=""/>
+        <device name="SND_DEVICE_IN_WIFI_CALL_USB_HEADPHONE_MIC" interface=""/>
+        <device name="SND_DEVICE_IN_WIFI_CALL_USB_HEADPHONE_MIC_EVS" interface=""/>
+        <device name="SND_DEVICE_IN_CALL_TTY_HEADSET_MIC" interface=""/>
+        <device name="SND_DEVICE_IN_CALL_TTY_VCO_MIC" interface=""/>
+        <device name="SND_DEVICE_IN_CALL_TTY_FULL_MIC" interface=""/>
+        <device name="SND_DEVICE_IN_WIFI_CALL_TTY_HEADSET_MIC" interface=""/>
+        <device name="SND_DEVICE_IN_WIFI_CALL_TTY_VCO_MIC" interface=""/>
+        <device name="SND_DEVICE_IN_WIFI_CALL_TTY_FULL_MIC" interface=""/>
+        <device name="SND_DEVICE_IN_VOIP_COMM_HEADPHONE_MIC" interface=""/>
+        <device name="SND_DEVICE_IN_VOIP_COMM_HEADSET_MIC" interface=""/>
+        <device name="SND_DEVICE_IN_VOIP_COMM_USB_HEADPHONE_MIC" interface=""/>
+        <device name="SND_DEVICE_IN_VOIP_FMC_HEADPHONE_MIC" interface=""/>
+        <device name="SND_DEVICE_IN_VOIP_FMC_HEADSET_MIC" interface=""/>
+        <device name="SND_DEVICE_IN_VOIP_FMC_USB_HEADPHONE_MIC" interface=""/>
+        <device name="SND_DEVICE_IN_LOOPBACK_HEADPHONE_MIC" interface=""/>
+        <device name="SND_DEVICE_IN_LOOPBACK_HEADSET_MIC" interface=""/>
+        <device name="SND_DEVICE_IN_HEADSET_MIC_KARAOKE" interface=""/>
+        <device name="SND_DEVICE_IN_HEADPHONE_MIC_KARAOKE" interface=""/>
+
+        <device name="SND_DEVICE_IN_CAPTURE_VI_FEEDBACK" interface="SEC_MI2S_TX"/>
+
     </backend_names>
 
+    <fm_pcm_ids>
+        <device name="SND_DEVICE_OUT_FM_SPEAKER" type="out" id="38"/>
+        <device name="SND_DEVICE_OUT_FM_SPEAKER" type="in" id="34"/>
+    </fm_pcm_ids>
 
+	<pcm_ids>
+	    <usecase name="USECASE_AUDIO_SPKR_CALIB_TX" type="in" id="1"/>
+    </pcm_ids>
 </audio_platform_info>
