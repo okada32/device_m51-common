@@ -55,7 +55,6 @@
             <libsw library="dap" uuid="6ab06da4-c516-4611-8166-452799218539"/>
             <libhw library="offload" uuid="a0c30891-8246-4aef-b8ad-d53e26da0253"/>
         </effectProxy>
-        <effect name="volumemonitor_hw" library="offload" uuid="052a63b0-f95a-11e9-8f0b-362b9e155667"/>
     </effects>
 
     <preprocess>

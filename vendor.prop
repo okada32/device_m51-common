@@ -177,9 +177,6 @@ ro.vendor.iocgrp.config=1
 ro.hardware.keystore=mdfpp
 ro.security.keystore.keytype=sakv2,gak
 
-# Light
-ro.hardware.lights=qcom
-
 # Media
 debug.media.codec2=2
 audio.offload.video=true
