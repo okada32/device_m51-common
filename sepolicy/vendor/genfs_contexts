@@ -50,6 +50,7 @@ genfscon sysfs /devices/virtual/misc/msm_alac/wakeup11                          
 
 # Fingerprint
 genfscon sysfs /class/fingerprint/fingerprint                                                      u:object_r:sysfs_fingerprint:s0
+genfscon sysfs /devices/virtual/fingerprint/fingerprint                                            u:object_r:sysfs_fingerprint:s0
 
 # Graphcis
 genfscon sysfs /devices/platform/cam_sync/video4linux/video1/name                                                                     u:object_r:sysfs_graphics:s0

@@ -77,16 +77,15 @@ on init
     chown system system /sys/class/leds/lcd-backlight/brightness
     chmod 0664 /sys/class/leds/lcd-backlight/brightness
 
-    # Support legacy paths
-    symlink /sdcard /mnt/sdcard
-    symlink /sdcard /storage/sdcard0
-
     # Create cgroup mount point for memory
     mkdir /sys/fs/cgroup/memory/bg 0750 root system
     write /sys/fs/cgroup/memory/bg/memory.swappiness 140
     write /sys/fs/cgroup/memory/bg/memory.move_charge_at_immigrate 1
     chown root system /sys/fs/cgroup/memory/bg/tasks
     chmod 0660 /sys/fs/cgroup/memory/bg/tasks
+
+    # Charger
+    chown system system /sys/class/power_supply/battery/batt_slate_mode
 
 on post-fs
     chmod 0755 /sys/kernel/debug/tracing
@@ -180,8 +179,6 @@ on boot
     chmod 0660 /mnt/vendor/efs/bluetooth/bt_addr
 
     # permissions for bluetooth.
-    setprop ro.bt.bdaddr_path "/mnt/vendor/efs/bluetooth/bt_addr"
-    chown bluetooth bluetooth ro.bt.bdaddr_path
     chown bluetooth bluetooth /dev/ttyHS0
     chmod 0660 /dev/ttyHS0
     chmod 0660 /sys/class/rfkill/rfkill0/state
@@ -286,9 +283,6 @@ on boot
 
     # Create hvdcp_opti directory
     mkdir /mnt/vendor/persist/hvdcp_opti 0770 root system
-
-    # limit discard size to 128MB in order to avoid long IO latency
-    write /sys/block/sda/queue/discard_max_bytes 134217728
 
 # msm specific files that need to be created on /data
 on post-fs-data
@@ -398,15 +392,7 @@ on post-fs-data
     mkdir /data/vendor/fm 0770 system system
     chmod 0770 /data/vendor/fm
 
-    #Create PERFD deamon related dirs
-    mkdir /data/vendor/perfd 0770 root system
-    chmod 2770 /data/vendor/perfd
-    rm /data/vendor/perfd/default_values
-
     mkdir /data/vendor/secure_element 0777 system system
-
-    #Create IOP  deamon related dirs
-    mkdir /data/vendor/iop 0700 root system
 
     # Mark the copy complete flag to not completed
     write /data/vendor/radio/copy_complete 0
@@ -441,6 +427,7 @@ on post-fs-data
     #Create SWAP related dirs
     mkdir /data/vendor/swap 0770 root system
     chmod 2770 /data/vendor/swap
+    swapon_all /vendor/etc/fstab.qcom
 
     # set aggressive read ahead for dm-0 and dm-1 during boot up
     write /sys/block/dm-0/queue/read_ahead_kb 2048
@@ -471,6 +458,12 @@ on post-fs-data
     mkdir /data/vendor/fpSnrTest 0770 system system
     mkdir /efs/biometrics 0770 system system
     mkdir /efs/biometrics/meta 0770 system system
+
+    # Prevents permission denied error for telephony
+    chmod 0644 /proc/cmdline
+
+    # Prevents permission denied error for gatekeeper to avoid wrong pin & locked storage issues
+    mkdir /data/vendor/gatekeeper 0770 system system
 
 service nqnfcinfo /system/vendor/bin/nqnfcinfo
     class late_start
@@ -623,20 +616,6 @@ on property:ro.data.large_tcp_window_size=true
 
 on property:sys.sysctl.tcp_adv_win_scale=*
     write /proc/sys/net/ipv4/tcp_adv_win_scale ${sys.sysctl.tcp_adv_win_scale}
-
-#service wpa_supplicant /vendor/bin/hw/wpa_supplicant \
-#    -O/data/vendor/wifi/wpa/sockets -puse_p2p_group_interface=1 -dd \
-#    -g@android:vendor_wpa_wlan0
-#   we will start as root and wpa_supplicant will switch to user wifi
-#   after setting up the capabilities required for WEXT
-#   user wifi
-#   group wifi inet keystore
-#    interface android.hardware.wifi.supplicant@1.0::ISupplicant default
-#    interface android.hardware.wifi.supplicant@1.1::ISupplicant default
-#    class main
-#    socket vendor_wpa_wlan0 dgram 660 wifi wifi
-#    disabled
-#    oneshot
 
 service vendor.wigig_supplicant /vendor/bin/hw/wpa_supplicant \
     -iwigig0 -Dnl80211 -c/data/vendor/wifi/wigig_supplicant.conf \
