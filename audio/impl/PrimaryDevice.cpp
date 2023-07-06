@@ -1,18 +1,18 @@
 /*
-** Copyright 2023, The LineageOS Project
-**
-** Licensed under the Apache License, Version 2.0 (the "License");
-** you may not use this file except in compliance with the License.
-** You may obtain a copy of the License at
-**
-**     http://www.apache.org/licenses/LICENSE-2.0
-**
-** Unless required by applicable law or agreed to in writing, software
-** distributed under the License is distributed on an "AS IS" BASIS,
-** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-** See the License for the specific language governing permissions and
-** limitations under the License.
-*/
+ * Copyright (C) 2018 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
 #define LOG_TAG "PrimaryDeviceHAL"
 
@@ -33,6 +33,10 @@ namespace hardware {
 namespace audio {
 namespace CPP_VERSION {
 namespace implementation {
+
+namespace util {
+using namespace ::android::hardware::audio::CORE_TYPES_CPP_VERSION::implementation::util;
+}
 
 PrimaryDevice::PrimaryDevice(audio_hw_device_t* device) : mDevice(new Device(device)) {}
 
@@ -200,7 +204,7 @@ Return<void> PrimaryDevice::updateAudioPatch(int32_t previousPatch,
 
 // Methods from ::android::hardware::audio::CPP_VERSION::IPrimaryDevice follow.
 Return<Result> PrimaryDevice::setVoiceVolume(float volume) {
-    if (!isGainNormalized(volume)) {
+    if (!util::isGainNormalized(volume)) {
         ALOGW("Can not set a voice volume (%f) outside [0,1]", volume);
         return Result::INVALID_ARGUMENTS;
     }
@@ -233,7 +237,7 @@ Return<Result> PrimaryDevice::setMode(AudioMode mode) {
     } else if (strcmp(simSlot, "1") == 0) {
         // SIM2
         mDevice->halSetParameters("call_state=2;g_call_state=2;g_call_sim_slot=0x02");
-    } else if (strcmp(simSlot, "-1") == 0) {
+   } else if (strcmp(simSlot, "-1") == 0) {
         // No call
         mDevice->halSetParameters("call_state=1;g_call_state=1");
     }
@@ -360,7 +364,7 @@ Return<Result> PrimaryDevice::setBtHfpSampleRate(uint32_t sampleRateHz) {
     return mDevice->setParam(AUDIO_PARAMETER_KEY_HFP_SET_SAMPLING_RATE, int(sampleRateHz));
 }
 Return<Result> PrimaryDevice::setBtHfpVolume(float volume) {
-    if (!isGainNormalized(volume)) {
+    if (!util::isGainNormalized(volume)) {
         ALOGW("Can not set BT HFP volume (%f) outside [0,1]", volume);
         return Result::INVALID_ARGUMENTS;
     }
