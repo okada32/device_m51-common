@@ -87,7 +87,7 @@ PRODUCT_PACKAGES += \
     libqcomvoiceprocessing \
     libreverbwrapper \
     libvisualizer \
-    libvolumelistener \
+    libvolumelistener:32 \
 
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/rootdir/vendor/etc/dolby/dax-default.xml:$(TARGET_COPY_OUT_VENDOR)/etc/dolby/dax-default.xml \
@@ -140,20 +140,21 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
+    android.frameworks.cameraservice.common@2.0.vendor \
+    android.frameworks.cameraservice.device@2.0.vendor \
+    android.frameworks.cameraservice.service@2.1.vendor \
     android.hardware.camera.provider@2.6-service.sm6150 \
-    android.hardware.camera.provider@2.4-legacy \
-    android.hardware.camera.provider@2.5-legacy \
-    camera.device@1.0-impl \
-    camera.device@3.2-impl \
-    camera.device@3.3-impl \
-    camera.device@3.4-impl \
-    camera.device@3.5-impl \
+    android.hardware.camera.provider@2.7.vendor \
+    android.hardware.camera.device@3.7.vendor \
+    Camera2 \
+    libcamera2ndk_vendor \
+    libdng_sdk.vendor \
+    libgui_vendor:32 \
     libgrallocusage.vendor \
+    libstdc++.vendor \
     vendor.qti.hardware.camera.device@1.0.vendor \
-    android.hardware.camera.device@3.6.vendor \
-    android.hardware.camera.provider@2.6.vendor \
-    Camera2
-
+    vendor.qti.hardware.camera.postproc@1.0.vendor 
+	
 # CAS
 PRODUCT_PACKAGES += \
     android.hardware.cas@1.2-service \
@@ -189,8 +190,11 @@ PRODUCT_PACKAGES += \
 # Fingerprint
 PRODUCT_PACKAGES += \
     android.hardware.biometrics.face@1.0.vendor \
-    android.hardware.biometrics.fingerprint@2.1.vendor \
-    android.hardware.biometrics.fingerprint@2.3-service.samsung
+    android.hardware.biometrics.fingerprint@2.3-service-samsung.m51
+	
+# Fingerprint Gestures
+PRODUCT_COPY_FILES += \
+    $(COMMON_PATH)/uinput-sec-fp.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/uinput-sec-fp.kl
 
 # FM
 PRODUCT_PACKAGES += \
@@ -331,23 +335,14 @@ PRODUCT_PACKAGES += \
 
 # NFC
 PRODUCT_PACKAGES += \
-    android.hardware.nfc@1.2:64 \
+    android.hardware.nfc@1.2-service.samsung \
     com.android.nfc_extras \
-    libchrome \
-    libchrome.vendor \
-    libnfc-nci \
-    libnfc_nci_jni \
     NfcNci \
-    SecureElement \
-    Tag \
-    vendor.nxp.nxpese@1.0:64 \
-    vendor.nxp.nxpnfc@1.0:64 \
+    Tag
 
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/rootdir/vendor/etc/nfc/libnfc-nxp_RF.conf:$(TARGET_COPY_OUT_VENDOR)/etc/nfc/libnfc-nxp_RF.conf \
-    $(COMMON_PATH)/rootdir/vendor/etc/libnfc-nci.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nci.conf \
-    $(COMMON_PATH)/rootdir/vendor/etc/libnfc-nxp.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nxp.conf \
-    $(COMMON_PATH)/rootdir/vendor/etc/libnfc-nxp_RF.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nxp_RF.conf \
+    $(COMMON_PATH)/rootdir/vendor/etc/nfc/libnfc-nci.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nci.conf \
+    $(COMMON_PATH)/rootdir/vendor/etc/nfc/libnfc-sec-vendor.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-sec-vendor.conf
 
 # OMX
 PRODUCT_PACKAGES += \
@@ -470,6 +465,8 @@ PRODUCT_PACKAGES += \
     fstab.qcom \
     fstab.qcom_ramdisk \
     init.nfc.samsung.rc \
+	fingerprint_common.rc \
+	init.fingerprint.rc \
     init.qcom.factory.rc \
     init.qcom.rc \
     init.qcom.usb.rc \

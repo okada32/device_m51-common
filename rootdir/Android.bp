@@ -119,6 +119,20 @@ prebuilt_etc {
 }
 
 prebuilt_etc {
+    name: "fingerprint_common.rc",
+    src: "vendor/etc/init/fingerprint_common.rc",
+    sub_dir: "init/",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.fingerprint.rc",
+    src: "vendor/etc/init/init.fingerprint.rc",
+    sub_dir: "init/",
+    vendor: true,
+}
+
+prebuilt_etc {
     name: "wifi_qcom.rc",
     src: "vendor/etc/init/wifi_qcom.rc",
     sub_dir: "init/",
