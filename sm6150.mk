@@ -190,7 +190,7 @@ PRODUCT_PACKAGES += \
 # Fingerprint
 PRODUCT_PACKAGES += \
     android.hardware.biometrics.face@1.0.vendor \
-    android.hardware.biometrics.fingerprint@2.3-service-samsung.m51
+    android.hardware.biometrics.fingerprint@2.3-service.samsung
 	
 # Fingerprint Gestures
 PRODUCT_COPY_FILES += \
@@ -366,7 +366,7 @@ PRODUCT_ENFORCE_RRO_TARGETS := *
 
 PRODUCT_PACKAGE_OVERLAYS += \
     $(COMMON_PATH)/overlay \
-    $(COMMON_PATH)/overlay-lineage \
+    $(COMMON_PATH)/overlay-voltage
 
 # Perf
 PRODUCT_PACKAGES += \
