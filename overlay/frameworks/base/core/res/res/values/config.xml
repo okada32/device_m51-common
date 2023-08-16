@@ -22,18 +22,23 @@
          Software implementation will be used if config_hardware_auto_brightness_available is not set -->
     <bool name="config_automatic_brightness_available">true</bool>
 
-    <!-- Screen brightness used to dim the screen when the user activity
-         timeout expires.  May be less than the minimum allowed brightness setting
-         that can be set by the user. -->
-    <integer name="config_screenBrightnessDim">15</integer>
+	<!-- Minimum screen brightness setting allowed by the power manager.
+         The user is forbidden from setting the brightness below this level. -->
+    <integer name="config_screenBrightnessSettingMinimum">1</integer>
 
     <!-- Default screen brightness setting.
          Must be in the range specified by minimum and maximum. -->
-    <integer name="config_screenBrightnessSettingDefault">128</integer>
+    <integer name="config_screenBrightnessSettingDefault">125</integer>
 
-    <!-- Minimum screen brightness setting allowed by the power manager.
-         The user is forbidden from setting the brightness below this level. -->
-    <integer name="config_screenBrightnessSettingMinimum">5</integer>
+    <!-- Screen brightness used to dim the screen when the user activity
+         timeout expires.  May be less than the minimum allowed brightness setting
+         that can be set by the user. -->
+    <integer name="config_screenBrightnessDim">17</integer>
+
+    <!-- Screen brightness used to dim the screen while dozing in a very low power state.
+         May be less than the minimum allowed brightness setting
+         that can be set by the user. -->
+    <integer name="config_screenBrightnessDoze">17</integer>
 
     <!-- Array of desired screen brightness in nits corresponding to the lux values
          in the config_autoBrightnessLevels array. As with config_screenBrightnessMinimumNits and
@@ -80,11 +85,6 @@
         <item>655</item>
         <item>700</item>
     </array>
-
-    <!-- Amount of time it takes for the light sensor to warm up in milliseconds.
-         For this time after the screen turns on, the Power Manager
-         will not debounce light sensor readings -->
-    <integer name="config_lightSensorWarmupTime">200</integer>
 
     <!-- Array of light sensor lux values to define our levels for auto backlight brightness support.
          The N entries of this array define N + 1 control points as follows:
@@ -756,9 +756,6 @@
     <!-- Flag indicating if the speed up audio on mt call code should be executed -->
     <bool name="config_speed_up_audio_on_mt_calls">true</bool>
 
-    <!-- Whether the Unprocessed audio source supports the required frequency range and level -->
-    <bool name="config_supportAudioSourceUnprocessed">false</bool>
-
     <!-- Config determines whether to update phone object when voice registration
          state changes. Voice radio tech change will always trigger an update of
          phone object irrespective of this config -->
@@ -785,11 +782,6 @@
          Note that doze dreams are not subject to the same start conditions as ordinary dreams.
          Doze dreams will run whenever the power manager is in a dozing state. -->
     <string name="config_dozeComponent">com.android.systemui/com.android.systemui.doze.DozeService</string>
-
-    <!-- Screen brightness used to dim the screen while dozing in a very low power state.
-         May be less than the minimum allowed brightness setting
-         that can be set by the user. -->
-    <integer name="config_screenBrightnessDoze">18</integer>
 
     <!-- If true, the display will be shifted around in ambient mode. -->
     <bool name="config_enableBurnInProtection">true</bool>
@@ -869,16 +861,6 @@
     <!-- True if home app should be pinned via Pinner Service -->
     <bool name="config_pinnerHomeApp">true</bool>
 
-    <!-- Indicates whether device has a power button fingerprint sensl
-    <bool name="config_is_powerbutton_fps">true</bool> -->
-
-    <!-- An array of arrays of side fingerprint sensor properties relative to each display.
-         Note: this value is temporary and is expected to be queried directly
-         from the HAL in the future.
-    <array name="config_sfps_sensor_props" translatable="false">
-        <item>@array/config_sfps_sensor_props_0</item>
-    </array>-->
-
     <!-- Enable system navigation keys. -->
     <bool name="config_supportSystemNavigationKeys">true</bool>
 
@@ -921,21 +903,14 @@
 	<!-- Indicates whether device has a power button fingerprint sensor. -->
     <bool name="config_is_powerbutton_fps">true</bool>
 
-    <!-- An array of arrays of side fingerprint sensor properties relative to each display.
-         Note: this value is temporary and is expected to be queried directly
-         from the HAL in the future. -->
-    <array name="config_sfps_sensor_props" translatable="false">
-        <item>@array/config_sfps_sensor_props_0</item>
-    </array>
-
-    <array name="config_sfps_sensor_props_0" translatable="false">
-        <item>local:4630947232161729154</item> <!--item>displayId</item-->
-        <item>1080</item> <!--item>sensorLocationX</item-->
-        <item>820</item> <!--item>sensorLocationY</item-->
-        <item>350</item> <!--item>sensorRadius</item-->
-    </array>
-
     <!-- Specify if the fingerprint hardware support gestures-->
     <bool name="config_fingerprintSupportsGestures">true</bool>
 
+    <!-- List of biometric sensors on the device, in decreasing strength. Consumed by AuthService
+         when registering authenticators with BiometricService. Format must be ID:Modality:Strength,
+         where: IDs are unique per device, Modality as defined in BiometricAuthenticator.java,
+         and Strength as defined in Authenticators.java -->
+    <string-array name="config_biometric_sensors" translatable="false" >
+        <item>0:2:15</item> <!-- ID0:Fingerprint:Strong -->
+    </string-array>
 </resources>

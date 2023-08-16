@@ -366,7 +366,7 @@ PRODUCT_ENFORCE_RRO_TARGETS := *
 
 PRODUCT_PACKAGE_OVERLAYS += \
     $(COMMON_PATH)/overlay \
-    $(COMMON_PATH)/overlay-voltage
+    $(COMMON_PATH)/overlay-syberia
 
 # Perf
 PRODUCT_PACKAGES += \
