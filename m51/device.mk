@@ -45,7 +45,7 @@ PRODUCT_PACKAGE_OVERLAYS += \
     $(DEVICE_PATH)/overlay
 	
 PRODUCT_PACKAGES += \
-    SettingsOverlayMarble
+    SettingsOverlay
 
 # Ramdisk
 PRODUCT_PACKAGES += \
