@@ -33,6 +33,9 @@ TARGET_BOARD_PLATFORM_GPU := qcom-adreno618
 TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):libinit_m51
 TARGET_RECOVERY_DEVICE_MODULES := libinit_m51
 
+# Kernel
+TARGET_KERNEL_CONFIG        := m51_defconfig
+BOARD_NAME                  := SRPTD22A005
 # Properties
 TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
 
