@@ -36,9 +36,16 @@ TARGET_SCREEN_WIDTH := 1080
 # Inherit Common Device Tree
 $(call inherit-product, device/samsung/sm6150-common/sm6150.mk)
 
+# Camera
+PRODUCT_PACKAGES += \
+    GCamGOPrebuilt-V4
+
 # Overlays
 PRODUCT_PACKAGE_OVERLAYS += \
     $(DEVICE_PATH)/overlay
+	
+PRODUCT_PACKAGES += \
+    SettingsOverlayMarble
 
 # Ramdisk
 PRODUCT_PACKAGES += \
