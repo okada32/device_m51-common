@@ -1,4 +1,4 @@
-# All unpinned blobs below are extracted from M515FXXS4DWA3 release-keys
+# Unpinned blobs from m51nsxx-user 11 RP1A.200720.012 M515FXXS4CUL1 release-keys
 
 # ADSP
 vendor/bin/adsprpcd
@@ -132,21 +132,8 @@ vendor/firmware/apbtfw11.tlv
 vendor/firmware/apnv11.bin
 
 # Camera
-vendor/lib/camera/f_dual_calibration.bin
-vendor/lib/camera/uw_dual_calibration.bin
-vendor/lib/camera/w_dual_calibration.bin
-vendor/lib/hw/camera.qcom.so
-vendor/lib/hw/com.samsung.chi.override.so
-vendor/lib/android.hardware.camera.provider@2.4-legacy.so
-vendor/lib/android.hardware.camera.provider@2.5-legacy.so
-vendor/lib/camera.device@1.0-impl.so
-vendor/lib/camera.device@3.2-impl.so
-vendor/lib/camera.device@3.3-impl.so
-vendor/lib/camera.device@3.4-impl.so
-vendor/lib/camera.device@3.5-impl.so
 vendor/lib/libBeauty_v4.camera.samsung.so
 vendor/lib/libDualCamBokehCapture.camera.samsung.so
-vendor/lib/libFacePreProcessing.camera.samsung.so
 vendor/lib/libHprFace_GAE_api.camera.samsung.so
 vendor/lib/libHpr_RecGAE_cvFeature_v1.0.camera.samsung.so
 vendor/lib/libLocalTM_capture_core.camera.samsung.so
@@ -175,7 +162,6 @@ vendor/lib/libllhdr_interface.so
 vendor/lib/liblow_light_hdr.so
 vendor/lib/libmpbase.so
 vendor/lib/libqcwrappercommon.so
-vendor/lib/libsaiv_BeautySolutionVideo.so
 vendor/lib/libsmartfocus_interface.so
 vendor/lib/libsmartfocusengine.so
 vendor/lib/libsnap_vndk.so
@@ -185,20 +171,9 @@ vendor/lib/libuniplugin.so
 vendor/lib/libvdis_core.so
 vendor/lib/libvdis_interface.so
 vendor/lib/vendor.qti.hardware.camera.device@1.0.so
-vendor/lib64/hw/camera.qcom.so
-vendor/lib64/hw/com.samsung.chi.override.so
-vendor/lib64/android.hardware.camera.provider@2.4-legacy.so
-vendor/lib64/android.hardware.camera.provider@2.5-legacy.so
-vendor/lib64/camera.device@1.0-impl.so
-vendor/lib64/camera.device@3.2-impl.so
-vendor/lib64/camera.device@3.3-impl.so
-vendor/lib64/camera.device@3.4-impl.so
-vendor/lib64/camera.device@3.5-impl.so
 vendor/lib64/libBeauty_v4.camera.samsung.so
 vendor/lib64/libDLInterface.camera.samsung.so
 vendor/lib64/libDualCamBokehCapture.camera.samsung.so
-vendor/lib64/libFacePreProcessing.camera.samsung.so
-vendor/lib64/libFacialStickerEngine.arcsoft.so
 vendor/lib64/libHprFace_GAE_api.camera.samsung.so
 vendor/lib64/libHpr_RecGAE_cvFeature_v1.0.camera.samsung.so
 vendor/lib64/libLocalTM_capture_core.camera.samsung.so
@@ -245,13 +220,6 @@ vendor/lib64/libvdis_core.so
 vendor/lib64/libvdis_interface.so
 vendor/lib64/vendor.qti.hardware.camera.device@1.0.so
 
-# Camera (Firmware)
-vendor/firmware/CAMERA_ICP.elf
-vendor/firmware/Data.msc
-vendor/firmware/dax_param.bin
-
-# Charger
-vendor/bin/hvdcp_opti
 
 # CVP
 vendor/lib/libcvp.so
@@ -356,20 +324,6 @@ vendor/lib64/libsdsprpc.so
 vendor/lib64/libsysmon_cdsp_skel.so
 vendor/lib64/vendor.qti.hardware.dsp@1.0.so
 
-# Fingerprint
-vendor/lib/libbauthserver.so
-vendor/lib/libbauthtzcommon.so
-vendor/lib/libegis_fp_normal_sensor_test.so
-vendor/lib/libgf_in_system_lib.so
-vendor/lib/libqfp_sensortest.so
-vendor/lib/libsynaFpSensorTestNwd.so
-vendor/lib64/libbauthserver.so
-vendor/lib64/libbauthtzcommon.so
-vendor/lib64/libegis_fp_normal_sensor_test.so
-vendor/lib64/libgf_in_system_lib.so
-vendor/lib64/libqfp_sensortest.so
-vendor/lib64/libsynaFpSensorTestNwd.so
-
 # IPA (Firmware)
 vendor/firmware/ipa_fws.b00
 vendor/firmware/ipa_fws.b01
@@ -399,6 +353,8 @@ vendor/bin/hw/android.hardware.gnss@2.1-service-qti
 vendor/bin/loc_launcher
 vendor/bin/lowi-server
 vendor/bin/xtra-daemon
+vendor/lib/libfloatingfeature.so
+vendor/lib64/libfloatingfeature.so
 vendor/etc/init/android.hardware.gnss@2.1-service-qti.rc
 vendor/etc/vintf/manifest/android.hardware.gnss@2.1-service-qti.xml
 vendor/lib/hw/android.hardware.gnss@2.1-impl-qti.so
@@ -407,7 +363,6 @@ vendor/lib/libbatching.so
 vendor/lib/libcdfw.so
 vendor/lib/libcdfw_remote_api.so
 vendor/lib/libdataitems.so
-vendor/lib/libfloatingfeature.so
 vendor/lib/libgeofencing.so
 vendor/lib/libgnss.so
 vendor/lib/libgnsspps.so
@@ -424,7 +379,6 @@ vendor/lib/liblocationservice_glue.so
 vendor/lib/liblowi_client.so
 vendor/lib/libpdmapper.so
 vendor/lib/libqcc_file_agent.so
-vendor/lib/libsemnativecarrierfeature.so
 vendor/lib/libsynergy_loc_api.so
 vendor/lib/vendor.qti.gnss@1.0.so
 vendor/lib/vendor.qti.gnss@1.1.so
@@ -441,7 +395,6 @@ vendor/lib64/libbatching.so
 vendor/lib64/libcdfw.so
 vendor/lib64/libcdfw_remote_api.so
 vendor/lib64/libdataitems.so
-vendor/lib64/libfloatingfeature.so
 vendor/lib64/libgeofencing.so
 vendor/lib64/libgnss.so
 vendor/lib64/libgnsspps.so
@@ -459,7 +412,6 @@ vendor/lib64/liblowi_client.so
 vendor/lib64/libpdmapper.so
 vendor/lib64/libqcc_file_agent.so
 vendor/lib64/libqdma_file_agent.so
-vendor/lib64/libsemnativecarrierfeature.so
 vendor/lib64/libsynergy_loc_api.so
 vendor/lib64/vendor.qti.gnss@1.0.so
 vendor/lib64/vendor.qti.gnss@1.1.so
@@ -547,15 +499,6 @@ vendor/lib64/unnhal-acc-adreno.so
 vendor/lib64/unnhal-acc-common.so
 vendor/lib64/unnhal-acc-hta.so
 vendor/lib64/unnhal-acc-hvx.so
-
-# NFC
-vendor/bin/hw/nxp.android.hardware.nfc@1.1-service
-vendor/etc/init/nxp.android.hardware.nfc@1.1-service.rc
-vendor/lib64/nfc_nci_nxp.so
-vendor/lib64/vendor.nxp.nxpnfc@1.1.so
-
-# NFC (Firmware)
-vendor/firmware/nfc/libpn553_fw.so
 
 # OMX
 vendor/lib/libAlacSwDec.so
@@ -685,9 +628,6 @@ vendor/lib/libqrtr.so
 vendor/lib/libqsocket.so
 -vendor/lib/libril.so
 vendor/lib/librilqmiservices-ext.so
-vendor/lib/libsec_semRil.so
-vendor/lib/libsecril-client.so
-vendor/lib/libsemnativecarrierfeature.so
 vendor/lib/libxml.so
 vendor/lib/vendor.qti.hardware.data.connection@1.0.so
 vendor/lib/vendor.qti.hardware.data.connection@1.1.so
@@ -711,9 +651,6 @@ vendor/lib64/libqsocket.so
 vendor/lib64/librilqmiservices-ext.so
 vendor/lib64/libsec-ril-dsds.so|93aee98fa1ba206d0cdb3e3778bb0488839f66d0
 vendor/lib64/libsec-ril.so|34aa13821e7a873a10c4008a9d11100b05bb3684
-vendor/lib64/libsec_semRil.so
-vendor/lib64/libsecril-client.so
-vendor/lib64/libsemnativecarrierfeature.so
 vendor/lib64/libvkmanager_vendor.so
 vendor/lib64/libxml.so
 vendor/lib64/vendor.qti.hardware.data.connection@1.0.so
@@ -723,6 +660,8 @@ vendor/lib64/vendor.samsung.hardware.radio.bridge@2.0.so
 vendor/lib64/vendor.samsung.hardware.radio.channel@2.0.so
 vendor/lib64/vendor.samsung.hardware.radio@2.0.so
 vendor/lib64/vendor.samsung.hardware.radio@2.1.so
+vendor/lib/libsemnativecarrierfeature.so
+vendor/lib64/libsemnativecarrierfeature.so
 
 # SCVE
 vendor/lib/libscveCommon.so
@@ -741,69 +680,6 @@ vendor/lib64/libscveObjectTracker.so
 vendor/lib64/libscveObjectTracker_stub.so
 vendor/lib64/vendor.qti.hardware.scve.objecttracker@1.0.so
 vendor/lib64/vendor.qti.hardware.scve.panorama@1.0.so
-
-# SEC
-vendor/lib/libsecnativefeature.so
-vendor/lib64/libsecnativefeature.so
-
-# Sensors
-vendor/bin/factory.ssc
-vendor/etc/sensors/config/default_sensors.json
-vendor/etc/sensors/config/lsm6dsm_0.json
-vendor/etc/sensors/config/sns_amd.json
-vendor/etc/sensors/config/sns_amd_sw_disabled.json
-vendor/etc/sensors/config/sns_amd_sw_enabled.json
-vendor/etc/sensors/config/sns_aont.json
-vendor/etc/sensors/config/sns_ccd.json
-vendor/etc/sensors/config/sns_cm.json
-vendor/etc/sensors/config/sns_dae.json
-vendor/etc/sensors/config/sns_diag_filter.json
-vendor/etc/sensors/config/sns_geomag_rv.json
-vendor/etc/sensors/config/sns_gyro_cal.json
-vendor/etc/sensors/config/sns_hw_revision.json
-vendor/etc/sensors/config/sns_mag_cal.json
-vendor/etc/sensors/config/sns_rmd.json
-vendor/etc/sensors/config/sns_rotv.json
-vendor/etc/sensors/config/sns_smd.json
-vendor/etc/sensors/config/sns_tilt.json
-vendor/etc/sensors/config/sns_tilt_sw_disabled.json
-vendor/etc/sensors/config/sns_tilt_sw_enabled.json
-vendor/etc/sensors/config/talos_ak991x_0.json
-vendor/etc/sensors/config/talos_ak991x_1.json
-vendor/etc/sensors/config/talos_ak991x_mst_0.json
-vendor/etc/sensors/config/talos_ak991x_mst_1.json
-vendor/etc/sensors/config/talos_ak991x_nfc_0.json
-vendor/etc/sensors/config/talos_ak991x_nfc_1.json
-vendor/etc/sensors/config/talos_lsm6dsm_0.json
-vendor/etc/sensors/config/talos_power_0.json
-vendor/etc/sensors/config/talos_stk3x3x_0.json
-vendor/etc/sensors/config/talos_tcs3407_0.json
-vendor/lib/libsensorlistener.so
-vendor/lib/libsensorndkbridge.so
-vendor/lib/libsensorslog.so
-vendor/lib/libsns_device_mode_stub.so
-vendor/lib/libsns_fastRPC_util.so
-vendor/lib/libsns_low_lat_stream_stub.so
-vendor/lib/libsns_registry_skel.so
-vendor/lib/libsnsapi.so
-vendor/lib/libssc.so
-vendor/lib/libssc_default_listener.so
-vendor/lib/sensors.grip.so
-vendor/lib/sensors.ssc.so
-vendor/lib64/libnanopb.so
-vendor/lib64/libsensorlistener.so
-vendor/lib64/libsensorndkbridge.so
-vendor/lib64/libsensorslog.so
-vendor/lib64/libsns_device_mode_stub.so
-vendor/lib64/libsns_fastRPC_util.so
-vendor/lib64/libsns_low_lat_stream_stub.so
-vendor/lib64/libsns_registry_skel.so
-vendor/lib64/libsnsapi.so
-vendor/lib64/libsnsdiaglog.so
-vendor/lib64/libssc.so
-vendor/lib64/libssc_default_listener.so
-vendor/lib64/sensors.grip.so
-vendor/lib64/sensors.ssc.so
 
 # Soundtrigger
 vendor/lib/libaudio_soundtrigger.so
