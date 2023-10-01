@@ -242,7 +242,6 @@ vendor/etc/qdcm_calib_data_ss_dsi_panel_SW83106_WM6676Z21_FHD.xml
 
 # Dolby
 vendor/etc/dolby/dax-default.xml
-vendor/lib64/libdeccfg.so
 
 # NFC
 vendor/etc/nfc/sec_s3nrn4v_hwreg.bin
@@ -312,8 +311,3 @@ vendor/etc/sensors/config/sns_tilt_sw_enabled.json
 vendor/etc/sensors/config/stk3a6x_0.json
 vendor/etc/sensors/config/stk3a9x_0.json
 
-# Configstore
-vendor/bin/hw/vendor.qti.hardware.capabilityconfigstore@1.0-service
-vendor/etc/init/vendor.qti.hardware.capabilityconfigstore@1.0-service.rc
-vendor/lib/hw/vendor.qti.hardware.capabilityconfigstore@1.0-impl.so
-vendor/lib64/hw/vendor.qti.hardware.capabilityconfigstore@1.0-impl.so
