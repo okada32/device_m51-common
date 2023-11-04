@@ -36,10 +36,6 @@ TARGET_SCREEN_WIDTH := 1080
 # Inherit Common Device Tree
 $(call inherit-product, device/samsung/sm6150-common/sm6150.mk)
 
-# Camera
-PRODUCT_PACKAGES += \
-    GCamGOPrebuilt-V4
-
 # Overlays
 PRODUCT_PACKAGE_OVERLAYS += \
     $(DEVICE_PATH)/overlay
@@ -73,6 +69,10 @@ PRODUCT_COPY_FILES += \
 # Soong Namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(DEVICE_PATH) \
+
+# VNDK
+PRODUCT_COPY_FILES += 
+    prebuilts/vndk/v33/arm64/arch-arm64-armv8-a/shared/vndk-core/libcrypto.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libcrypto-v33.so
 
 # Get non-open-source specific aspects
 $(call inherit-product, vendor/samsung/m51/m51-vendor.mk)
