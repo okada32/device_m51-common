@@ -18,8 +18,8 @@
 $(call inherit-product, device/samsung/m51/device.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-# Inherit some common Evolution X stuff.
-$(call inherit-product, vendor/evolution/config/common_full_phone.mk)
+# Inherit some common LineageOS stuff.
+$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
 # Device identifier. This must come after all inclusions.
 PRODUCT_NAME := lineage_m51
@@ -38,8 +38,3 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     TARGET_BOOTLOADER_BOARD_NAME=sm6150 \
 
 BUILD_FINGERPRINT := "samsung/m51nsxx/qssi:12/SP1A.210812.016/M515FXXS4DWA3:user/release-keys"
-
-# Evolution Flags
-TARGET_USES_PICO_GAPPS := true
-TARGET_BOOT_ANIMATION_RES := 1440
-TARGET_SUPPORTS_QUICK_TAP := true
