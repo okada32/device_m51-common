@@ -38,7 +38,7 @@
 /efs/imei(/.*)?                              u:object_r:imei_efs_file:s0
 /efs/nfc(/.*)?                               u:object_r:nfc_efs_file:s0
 /efs/pfw_data(/.*)?                          u:object_r:pfw_efs_file:s0
-/efs/qualcomm(/.*)?                           u:object_r:audio_efs_file:s0
+/efs/tas25xx(/.*)?                           u:object_r:audio_efs_file:s0
 
 /mnt/vendor/efs(/.*)?                        u:object_r:efs_file:s0
 /mnt/vendor/efs/bluetooth(/.*)?              u:object_r:bluetooth_efs_file:s0

@@ -42,3 +42,11 @@ set_prop(hal_power_default, vendor_power_prop)
 # for lcd_onoff node
 allow hal_power_default { sysfs_sensors vendor_sysfs_sensors }:dir search;
 allow hal_power_default sysfs_sensors:file { open write };
+
+allow hal_power_default sysfs_type:dir { ioctl read getattr lock open watch watch_reads search };
+allow hal_power_default sysfs_type:file { ioctl read getattr lock map open watch watch_reads };
+allow hal_power_default sysfs_type:lnk_file r_file_perms;
+
+allow hal_power_default sysfs_wakeup:dir { ioctl read getattr lock open watch watch_reads search };
+allow hal_power_default { sysfs_wakeup }:file rw_file_perms;
+allow hal_power_default sysfs_wakeup:lnk_file r_file_perms;
