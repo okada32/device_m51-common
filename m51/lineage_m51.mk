@@ -18,8 +18,8 @@
 $(call inherit-product, device/samsung/m51/device.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-# Inherit some common Evolution X stuff.
-$(call inherit-product, vendor/evolution/config/common_full_phone.mk)
+# Inherit some common LineageOS stuff.
+$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
 # Device identifier. This must come after all inclusions.
 PRODUCT_NAME := lineage_m51
@@ -32,14 +32,26 @@ PRODUCT_MANUFACTURER := samsung
 PRODUCT_GMS_CLIENTID_BASE := android-samsung
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    PRIVATE_BUILD_DESC="m51nsxx-user 12 SP1A.210812.016 M515FXXS4DWA3 release-keys" \
     PRODUCT_DEVICE=m51 \
     PRODUCT_NAME=m51nsxx \
-    TARGET_BOOTLOADER_BOARD_NAME=sm6150 \
+    TARGET_BOOTLOADER_BOARD_NAME=sm6150
 
-BUILD_FINGERPRINT := "samsung/m51nsxx/qssi:12/SP1A.210812.016/M515FXXS4DWA3:user/release-keys"
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    PRIVATE_BUILD_DESC="husky-user 14 UD1A.230803.001/10808477 release-keys"
 
-# Evolution Flags
-TARGET_USES_PICO_GAPPS := true
-TARGET_BOOT_ANIMATION_RES := 1440
+# Set BUILD_FINGERPRINT variable to be picked up by both system and vendor build.prop
+BUILD_FINGERPRINT := "google/husky/husky:14/UD1A.230803.041/10808477:user/release-keys"
+
+# Animations
 TARGET_SUPPORTS_QUICK_TAP := true
+TARGET_ENABLE_BLUR := true
+TARGET_EXCLUDES_AUDIOFX := true
+TARGET_FACE_UNLOCK_SUPPORTED := true
+
+# AlphaDroid
+ALPHA_MAINTAINER := Okada
+WITH_GAPPS := true
+
+# Debugging Flags
+TARGET_INCLUDE_MATLOG := true
+TARGET_DEFAULT_ADB_ENABLED := false

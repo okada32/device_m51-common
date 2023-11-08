@@ -38,7 +38,7 @@ $(call inherit-product, device/samsung/sm6150-common/sm6150.mk)
 
 # Camera
 PRODUCT_PACKAGES += \
-    GCamGOPrebuilt-V4
+#    GCamGOPrebuilt-V4
 
 # Overlays
 PRODUCT_PACKAGE_OVERLAYS += \
