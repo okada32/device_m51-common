@@ -149,7 +149,6 @@ PRODUCT_PACKAGES += \
     libgui_vendor:32 \
     libgrallocusage.vendor \
     libstdc++ \
-    libstdc++.vendor \
     vendor.qti.hardware.camera.device@1.0.vendor \
     vendor.qti.hardware.camera.postproc@1.0.vendor \
 
@@ -443,8 +442,8 @@ PRODUCT_COPY_FILES += \
 
 # Protobuf
 PRODUCT_PACKAGES += \
-    libprotobuf-cpp-full-vendorcompat \
-    libprotobuf-cpp-lite-vendorcompat \
+    libprotobuf-cpp-full-3.9.1-vendorcompat \
+    libprotobuf-cpp-lite-3.9.1-vendorcompat \
 
 # Public Libraries
 PRODUCT_COPY_FILES += \
@@ -555,6 +554,7 @@ PRODUCT_COPY_FILES += \
 
 # Sensors
 PRODUCT_PACKAGES += \
+    android.frameworks.sensorservice@1.0.vendor \
     android.hardware.sensors-service.samsung-multihal \
     android.hardware.sensors@2.0-ScopedWakelock.vendor \
     libsensorndkbridge \
@@ -607,6 +607,7 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
     prebuilts/vndk/v30/arm64/arch-arm64-armv8-a/shared/vndk-sp/libutils.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libutils-v30.so \
+    prebuilts/vndk/v33/arm64/arch-arm64-armv8-a/shared/vndk-core/libcrypto.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libcrypto-v33.so \
 
 # Vibrator
 PRODUCT_PACKAGES += \
@@ -614,7 +615,7 @@ PRODUCT_PACKAGES += \
 
 # WiFi
 PRODUCT_PACKAGES += \
-    android.hardware.wifi@1.0-service \
+    android.hardware.wifi-service \
     hostapd \
     libwifi-hal-qcom \
     libwpa_client \

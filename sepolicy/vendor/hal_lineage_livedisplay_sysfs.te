@@ -1,3 +1,5 @@
+init_daemon_domain(hal_lineage_livedisplay_sysfs)
+
 allow hal_lineage_livedisplay_sysfs display_vendor_data_file:dir { write add_name search };
 allow hal_lineage_livedisplay_sysfs display_vendor_data_file:file { read write open create getattr };
 
