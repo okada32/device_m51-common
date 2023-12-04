@@ -24,6 +24,9 @@ $(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
 
 COMMON_PATH := device/samsung/sm6150-common
 
+# Debug utils
+$(call inherit-product, hardware/samsung-ext/interfaces/debug-tools/debug.mk)
+
 PRODUCT_BUILD_SUPER_PARTITION := false
 #PRODUCT_CHARACTERISTICS := nosdcard
 PRODUCT_TARGET_VNDK_VERSION := 30
@@ -549,6 +552,11 @@ PRODUCT_PACKAGES += \
     librilutils \
     libxml2 \
     secril_config_svc \
+
+# Samsung Ext Flash
+PRODUCT_PACKAGES += \
+     vendor.samsung_ext.hardware.camera.flashlight-service \
+     FlashControl
 
 # Seccomp Policy
 PRODUCT_COPY_FILES += \
