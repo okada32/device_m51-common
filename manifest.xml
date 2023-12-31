@@ -90,16 +90,6 @@
         <fqname>@4.0::IKeymasterDevice/default</fqname>
     </hal>
     <hal format="hidl">
-        <name>android.hardware.light</name>
-        <transport>hwbinder</transport>
-        <version>2.0</version>
-        <interface>
-            <name>ILight</name>
-            <instance>default</instance>
-        </interface>
-        <fqname>@2.0::ILight/default</fqname>
-    </hal>
-    <hal format="hidl">
         <name>android.hardware.media.c2</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
@@ -256,7 +246,7 @@
             <instance>default</instance>
         </interface>
         <interface>
-            <name>IDisplayModes</name>
+            <name>IDisplayColorCalibration</name>
             <instance>default</instance>
         </interface>
         <interface>
@@ -264,7 +254,7 @@
             <instance>default</instance>
         </interface>
         <fqname>@2.0::IAdaptiveBacklight/default</fqname>
-        <fqname>@2.0::IDisplayModes/default</fqname>
+        <fqname>@2.0::IDisplayColorCalibration/default</fqname>
         <fqname>@2.0::ISunlightEnhancement/default</fqname>
     </hal>
     <hal format="hidl">
@@ -514,6 +504,15 @@
         </interface>
         <fqname>@2.0::ISehGnss/default</fqname>
     </hal>
+    <hal format="hidl">
+        <name>vendor.samsung.hardware.health</name>
+        <transport>hwbinder</transport>
+        <version>2.0</version>
+        <interface>
+            <name>ISehHealth</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
     <hal format="aidl">
         <name>vendor.samsung.hardware.media.converter</name>
         <fqname>ISehColorConverterStore/default</fqname>
@@ -557,5 +556,14 @@
         <fqname>@2.0::ISehChannel/epdgd2</fqname>
         <fqname>@2.0::ISehChannel/imsd</fqname>
         <fqname>@2.0::ISehChannel/imsd2</fqname>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.samsung.hardware.thermal</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>ISehThermal</name>
+            <instance>default</instance>
+        </interface>
     </hal>
 </manifest>

@@ -16,16 +16,11 @@
 ** limitations under the License.
 */
 -->
-<!-- Pixel specific wifi overlays -->
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    coreApp="true"
-    package="com.android.wifi.resources.samsung_sm6150"
-    android:versionCode="1"
-    android:versionName="1.0">
-    <application android:hasCode="false" />
-    <overlay
-      android:targetPackage="com.android.wifi.resources"
-      android:targetName="WifiCustomization"
-      android:isStatic="true"
-      android:priority="0"/>
-</manifest>
+<resources>
+    <!-- If the hardware supports specially marking packets that caused a wakeup of the
+         main CPU, set this value to the mark used. -->
+    <integer translatable="false" name="config_networkWakeupPacketMark">0x80000000</integer>
+
+    <!-- Mask to use when checking skb mark defined in config_networkWakeupPacketMark above. -->
+    <integer translatable="false" name="config_networkWakeupPacketMask">0x80000000</integer>
+</resources>

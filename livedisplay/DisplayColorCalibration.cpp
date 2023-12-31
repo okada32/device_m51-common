@@ -19,9 +19,10 @@
 
 #include <fstream>
 
-#include "SunlightEnhancement.h"
+#include "DisplayColorCalibration.h"
 
 using android::base::ReadFileToString;
+using android::base::Split;
 using android::base::Trim;
 using android::base::WriteStringToFile;
 
@@ -31,28 +32,42 @@ namespace livedisplay {
 namespace V2_0 {
 namespace samsung {
 
-static constexpr const char* kSREPath = "/sys/class/mdnie/mdnie/outdoor";
+static constexpr const char* kColorPath = "/sys/class/mdnie/mdnie/sensorRGB";
 
-// Methods from ::vendor::lineage::livedisplay::V2_0::ISunlightEnhancement follow.
-bool SunlightEnhancement::isSupported() {
-    std::fstream sre(kSREPath, sre.in | sre.out);
-
-    return sre.good();
+bool DisplayColorCalibration::isSupported() {
+    std::fstream rgb(kColorPath, rgb.in | rgb.out);
+    return rgb.good();
 }
 
-// Methods from ::vendor::lineage::livedisplay::V2_0::IAdaptiveBacklight follow.
-Return<bool> SunlightEnhancement::isEnabled() {
+Return<int32_t> DisplayColorCalibration::getMaxValue() {
+    return 255;
+}
+
+Return<int32_t> DisplayColorCalibration::getMinValue() {
+    return 1;
+}
+
+Return<void> DisplayColorCalibration::getCalibration(getCalibration_cb resultCb) {
+    std::vector<int32_t> rgb;
     std::string tmp;
-    int32_t statusSRE = 0;
-    if (ReadFileToString(kSREPath, &tmp)) {
-        statusSRE = std::stoi(Trim(tmp));
+
+    if (ReadFileToString(kColorPath, &tmp)) {
+        std::vector<std::string> colors = Split(Trim(tmp), " ");
+        for (const std::string& color : colors) {
+            rgb.push_back(std::stoi(color));
+        }
     }
 
-    return statusSRE == 1;
+    resultCb(rgb);
+    return Void();
 }
 
-Return<bool> SunlightEnhancement::setEnabled(bool enabled) {
-    return WriteStringToFile(enabled ? "1" : "0", kSREPath, true);
+Return<bool> DisplayColorCalibration::setCalibration(const hidl_vec<int32_t>& rgb) {
+    std::string contents;
+    for (const int32_t& color : rgb) {
+        contents += std::to_string(color) + " ";
+    }
+    return WriteStringToFile(Trim(contents), kColorPath, true);
 }
 
 }  // namespace samsung

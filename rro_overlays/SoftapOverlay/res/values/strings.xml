@@ -16,16 +16,7 @@
 ** limitations under the License.
 */
 -->
-<!-- Pixel specific wifi overlays -->
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    coreApp="true"
-    package="com.android.wifi.resources.samsung_sm6150"
-    android:versionCode="1"
-    android:versionName="1.0">
-    <application android:hasCode="false" />
-    <overlay
-      android:targetPackage="com.android.wifi.resources"
-      android:targetName="WifiCustomization"
-      android:isStatic="true"
-      android:priority="0"/>
-</manifest>
+<resources>
+    <string name="config_wifiSoftap2gChannelList">1-11</string>
+    <string name="config_wifiSoftap5gChannelList">149</string>
+</resources>

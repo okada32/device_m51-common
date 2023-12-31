@@ -16,16 +16,15 @@
 ** limitations under the License.
 */
 -->
-<!-- Pixel specific wifi overlays -->
+<!-- Pixel specific connectivity overlays -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    coreApp="true"
-    package="com.android.wifi.resources.samsung_sm6150"
+    package="com.android.connectivity.resources.overlay"
     android:versionCode="1"
     android:versionName="1.0">
     <application android:hasCode="false" />
     <overlay
-      android:targetPackage="com.android.wifi.resources"
-      android:targetName="WifiCustomization"
+      android:targetPackage="com.android.connectivity.resources"
+      android:targetName="ServiceConnectivityResourcesConfig"
       android:isStatic="true"
       android:priority="0"/>
 </manifest>

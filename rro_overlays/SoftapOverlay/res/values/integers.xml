@@ -17,5 +17,5 @@
 */
 -->
 <resources>
-    <integer name="config_chargingFastThreshold">10800000</integer>
+    <integer name="config_wifiHardwareSoftapMaxClientCount">10</integer>
 </resources>

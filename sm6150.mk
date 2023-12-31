@@ -25,7 +25,7 @@ $(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
 COMMON_PATH := device/samsung/sm6150-common
 
 PRODUCT_BUILD_SUPER_PARTITION := false
-PRODUCT_CHARACTERISTICS := nosdcard
+#PRODUCT_CHARACTERISTICS := nosdcard
 PRODUCT_TARGET_VNDK_VERSION := 30
 ifeq ($(TARGET_USE_DYNAMIC_PARTITIONS),true)
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
@@ -89,6 +89,7 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/rootdir/vendor/etc/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml \
     $(COMMON_PATH)/rootdir/vendor/etc/audio_effects_common.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects_common.conf \
     $(COMMON_PATH)/rootdir/vendor/etc/audio_effects_sec.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects_sec.xml \
+    $(COMMON_PATH)/rootdir/vendor/etc/audio_effects_spatializer.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects_spatializer.xml \
     $(COMMON_PATH)/rootdir/vendor/etc/audio_io_policy.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_io_policy.conf \
     $(COMMON_PATH)/rootdir/vendor/etc/audio_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info.xml \
     $(COMMON_PATH)/rootdir/vendor/etc/audio_platform_info_diff.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info_diff.xml \
@@ -108,11 +109,16 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/rootdir/vendor/etc/mixer_usb_default.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_usb_default.xml \
     $(COMMON_PATH)/rootdir/vendor/etc/mixer_usb_gray.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_usb_gray.xml \
     $(COMMON_PATH)/rootdir/vendor/etc/playback_record_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/playback_record_audio_policy_configuration.xml \
+    $(COMMON_PATH)/rootdir/vendor/etc/sec_audio_volume_curve.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sec_audio_volume_curve.xml \
+    $(COMMON_PATH)/rootdir/vendor/etc/situation_audio_policy_volumes_sec.xml:$(TARGET_COPY_OUT_VENDOR)/etc/situation_audio_policy_volumes_sec.xml \
+    $(COMMON_PATH)/rootdir/vendor/etc/somxreg.conf:$(TARGET_COPY_OUT_VENDOR)/etc/somxreg.conf \
+    $(COMMON_PATH)/rootdir/vendor/etc/SoundBoosterParam.txt:$(TARGET_COPY_OUT_VENDOR)/etc/SoundBoosterParam.txt \
     $(COMMON_PATH)/rootdir/vendor/etc/sound_trigger_mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sound_trigger_mixer_paths.xml \
     $(COMMON_PATH)/rootdir/vendor/etc/sound_trigger_mixer_paths_qrd.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sound_trigger_mixer_paths_qrd.xml \
     $(COMMON_PATH)/rootdir/vendor/etc/sound_trigger_mixer_paths_wcd9340.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sound_trigger_mixer_paths_wcd9340.xml \
     $(COMMON_PATH)/rootdir/vendor/etc/sound_trigger_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sound_trigger_platform_info.xml \
     $(COMMON_PATH)/rootdir/vendor/etc/system_properties.xml:$(TARGET_COPY_OUT_VENDOR)/etc/system_properties.xml \
+    $(COMMON_PATH)/rootdir/vendor/etc/tms_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/tms_audio_policy_configuration.xml \
 
 PRODUCT_COPY_FILES += \
     frameworks/av/services/audiopolicy/config/bluetooth_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_audio_policy_configuration.xml \
@@ -128,6 +134,7 @@ PRODUCT_PACKAGES += \
 
 # Bluetooth
 PRODUCT_PACKAGES += \
+    android.hardware.bluetooth@1.0 \
     android.hardware.bluetooth@1.0.vendor \
     aptxalsOverlay \
     audio.bluetooth.default \
@@ -149,6 +156,7 @@ PRODUCT_PACKAGES += \
     libgui_vendor:32 \
     libgrallocusage.vendor \
     libstdc++ \
+    libstdc++_vendor \
     vendor.qti.hardware.camera.device@1.0.vendor \
     vendor.qti.hardware.camera.postproc@1.0.vendor \
 
@@ -164,16 +172,16 @@ PRODUCT_PACKAGES += \
 $(call inherit-product, vendor/qcom/opensource/dataservices/dataservices_vendor_product.mk)
 
 # SamsungAdvancedDisplay
-PRODUCT_PACKAGES += \
-    AdvancedDisplay \
+#PRODUCT_PACKAGES += \
+#    AdvancedDisplay \
 
 # SamsungDAP
 PRODUCT_PACKAGES += \
     SamsungDAP \
 
 # SamsungDoze
-PRODUCT_PACKAGES += \
-    SamsungDoze \
+#PRODUCT_PACKAGES += \
+#    SamsungDoze \
 
 # DRM
 PRODUCT_PACKAGES += \
@@ -188,6 +196,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.biometrics.face@1.0.vendor \
     android.hardware.biometrics.fingerprint@2.1 \
+    android.hardware.biometrics.fingerprint@2.3-service.samsung \
 
 # FM
 PRODUCT_PACKAGES += \
@@ -281,8 +290,7 @@ PRODUCT_PACKAGES += \
 
 # Lights
 PRODUCT_PACKAGES += \
-    android.hardware.light@2.0-impl \
-    android.hardware.light@2.0-service \
+    android.hardware.light-service.samsung \
     lights.sm6150 \
 
 # LiveDisplay
@@ -611,20 +619,24 @@ PRODUCT_COPY_FILES += \
 
 # Vibrator
 PRODUCT_PACKAGES += \
-    android.hardware.vibrator-service.sm6150 \
+    android.hardware.vibrator-service.samsung \
 
 # WiFi
 PRODUCT_PACKAGES += \
     android.hardware.wifi-service \
+    ConnectivityOverlay \
     hostapd \
+    libkeystore-engine-wifi-hidl \
+    libkeystore-wifi-hidl \
     libwifi-hal-qcom \
     libwpa_client \
+    SoftapOverlay \
     TetheringConfigOverlay \
+    vendor.qti.hardware.wifi.hostapd@1.1.vendor \
+    vendor.qti.hardware.wifi.supplicant@2.0.vendor \
     WifiOverlay \
     wpa_supplicant \
     wpa_supplicant.conf \
-    vendor.qti.hardware.wifi.hostapd@1.1.vendor \
-    vendor.qti.hardware.wifi.supplicant@2.0.vendor \
 
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/rootdir/vendor/etc/wifi/indoorchannel.info:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/indoorchannel.info \
