@@ -441,12 +441,9 @@ PRODUCT_COPY_FILES += \
 
 # Power
 PRODUCT_PACKAGES += \
-    android.hardware.power-service-qti.sm6150 \
+    android.hardware.power-service.samsung-libperfmgr \
     android.hardware.power.stats@1.0-service.mock \
     android.hardware.power@1.3.vendor \
-
-PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/rootdir/vendor/etc/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml \
 
 # Protobuf
 PRODUCT_PACKAGES += \
@@ -576,6 +573,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_SOONG_NAMESPACES += \
     $(COMMON_PATH) \
     hardware/samsung \
+	hardware/google/interfaces \
+    hardware/google/pixel \
+    hardware/samsung/aidl/power-libperfmgr \
     vendor/qcom/opensource/usb/etc \
 
 # Telephony
