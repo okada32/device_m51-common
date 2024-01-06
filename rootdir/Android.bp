@@ -77,20 +77,6 @@ prebuilt_etc {
 }
 
 prebuilt_etc {
-    name: "init.vendor.rilchip.rc",
-    src: "vendor/etc/init/init.vendor.rilchip.rc",
-    sub_dir: "init/",
-    vendor: true,
-}
-
-prebuilt_etc {
-    name: "init.vendor.rilcommon.rc",
-    src: "vendor/etc/init/init.vendor.rilcommon.rc",
-    sub_dir: "init/",
-    vendor: true,
-}
-
-prebuilt_etc {
     name: "init.vendor.sensors.rc",
     src: "vendor/etc/init/init.vendor.sensors.rc",
     sub_dir: "init/",
