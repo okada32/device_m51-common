@@ -28,7 +28,6 @@ COMMON_PATH := device/samsung/sm6150-common
 $(call inherit-product, hardware/samsung-ext/interfaces/debug-tools/debug.mk)
 
 PRODUCT_BUILD_SUPER_PARTITION := false
-#PRODUCT_CHARACTERISTICS := nosdcard
 PRODUCT_TARGET_VNDK_VERSION := 30
 ifeq ($(TARGET_USE_DYNAMIC_PARTITIONS),true)
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
@@ -548,10 +547,10 @@ PRODUCT_PACKAGES += \
     android.hardware.radio@1.5.vendor \
     android.hardware.radio.config@1.2.vendor \
     android.hardware.radio.deprecated@1.0.vendor \
-    android.hardware.secure_element@1.0.vendor \
+    android.hardware.secure_element@1.2.vendor \
+    librmnetctl \
     librilutils \
     libxml2 \
-    secril_config_svc \
 
 # Samsung Ext Flash
 PRODUCT_PACKAGES += \
@@ -591,12 +590,20 @@ PRODUCT_SOONG_NAMESPACES += \
 
 # Telephony
 PRODUCT_PACKAGES += \
+    extphonelib \
+    extphonelib-product \
+    extphonelib.xml \
+    extphonelib_product.xml \
     ims-ext-common \
     ims_ext_common.xml \
     qti-telephony-hidl-wrapper \
+    qti-telephony-hidl-wrapper-prd \
     qti_telephony_hidl_wrapper.xml \
+    qti_telephony_hidl_wrapper_prd.xml \
     qti-telephony-utils \
+    qti-telephony-utils-prd \
     qti_telephony_utils.xml \
+    qti_telephony_utils_prd.xml \
     telephony-ext \
 
 PRODUCT_BOOT_JARS += \

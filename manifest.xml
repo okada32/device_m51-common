@@ -137,14 +137,10 @@
     <hal format="hidl" override="true">
         <name>android.hardware.radio</name>
         <transport>hwbinder</transport>
-    </hal>
-    <hal format="hidl" override="true">
-        <name>android.hardware.radio</name>
-        <transport>hwbinder</transport>
         <fqname>@1.2::ISap/slot1</fqname>
         <fqname>@1.2::ISap/slot2</fqname>
-        <fqname>@1.4::IRadio/slot1</fqname>
-        <fqname>@1.4::IRadio/slot2</fqname>
+        <fqname>@1.5::IRadio/slot1</fqname>
+        <fqname>@1.5::IRadio/slot2</fqname>
     </hal>
     <hal format="hidl" override="true">
         <name>android.hardware.radio.config</name>
@@ -173,7 +169,12 @@
     <hal format="hidl" override="true">
         <name>android.hardware.secure_element</name>
         <transport>hwbinder</transport>
-        <version>1.0</version>
+        <version>1.2</version>
+        <interface>
+            <name>ISecureElement</name>
+            <instance>SIM1</instance>
+            <instance>SIM2</instance>
+        </interface>
     </hal>
     <hal format="hidl">
         <name>android.hardware.soundtrigger</name>
@@ -204,18 +205,6 @@
             <instance>default</instance>
         </interface>
         <fqname>@1.0::IAntHci/default</fqname>
-    </hal>
-    <hal format="hidl" override="true">
-        <name>com.qualcomm.qti.dpm.api</name>
-        <transport>hwbinder</transport>
-    </hal>
-    <hal format="hidl" override="true">
-        <name>com.qualcomm.qti.imscmservice</name>
-        <transport>hwbinder</transport>
-    </hal>
-    <hal format="hidl" override="true">
-        <name>com.qualcomm.qti.uceservice</name>
-        <transport>hwbinder</transport>
     </hal>
     <hal format="hidl">
         <name>vendor.display.color</name>
@@ -256,20 +245,6 @@
         <fqname>@2.0::IAdaptiveBacklight/default</fqname>
         <fqname>@2.0::IDisplayColorCalibration/default</fqname>
         <fqname>@2.0::ISunlightEnhancement/default</fqname>
-    </hal>
-    <hal format="hidl">
-        <name>vendor.nxp.nxpnfc</name>
-        <transport>hwbinder</transport>
-        <version>1.1</version>
-        <interface>
-            <name>INxpNfc</name>
-            <instance>default</instance>
-        </interface>
-        <fqname>@1.1::INxpNfc/default</fqname>
-    </hal>
-    <hal format="hidl" override="true">
-        <name>vendor.qti.data.factory</name>
-        <transport>hwbinder</transport>
     </hal>
     <hal format="hidl">
         <name>vendor.qti.hardware.cacert</name>
@@ -314,14 +289,6 @@
         </interface>
         <fqname>@1.0::ICryptfsHw/default</fqname>
     </hal>
-    <hal format="hidl" override="true">
-        <name>vendor.qti.hardware.data.connection</name>
-        <transport>hwbinder</transport>
-    </hal>
-    <hal format="hidl" override="true">
-        <name>vendor.qti.hardware.data.latency</name>
-        <transport>hwbinder</transport>
-    </hal>
     <hal format="hidl">
         <name>vendor.qti.hardware.dsp</name>
         <transport>hwbinder</transport>
@@ -331,15 +298,6 @@
             <instance>dspservice</instance>
         </interface>
         <fqname>@1.0::IDspService/dspservice</fqname>
-    </hal>
-    <hal format="hidl" override="true">
-        <name>vendor.qti.hardware.embmssl</name>
-        <transport>hwbinder</transport>
-    </hal>
-    <hal format="hidl" override="true">
-        <name>vendor.qti.hardware.factory</name>
-        <transport>hwbinder</transport>
-        <version>1.1</version>
     </hal>
     <hal format="hidl">
         <name>vendor.qti.hardware.fm</name>
@@ -351,10 +309,6 @@
         </interface>
         <fqname>@1.0::IFmHci/default</fqname>
     </hal>
-    <hal format="hidl" override="true">
-        <name>vendor.qti.hardware.mwqemadapter</name>
-        <transport>hwbinder</transport>
-    </hal>
     <hal format="hidl">
         <name>vendor.qti.hardware.qseecom</name>
         <transport>hwbinder</transport>
@@ -364,42 +318,6 @@
             <instance>default</instance>
         </interface>
         <fqname>@1.0::IQSEECom/default</fqname>
-    </hal>
-    <hal format="hidl" override="true">
-        <name>vendor.qti.hardware.radio.am</name>
-        <transport>hwbinder</transport>
-    </hal>
-    <hal format="hidl" override="true">
-        <name>vendor.qti.hardware.radio.ims</name>
-        <transport>hwbinder</transport>
-    </hal>
-    <hal format="hidl" override="true">
-        <name>vendor.qti.hardware.radio.internal.deviceinfo</name>
-        <transport>hwbinder</transport>
-    </hal>
-    <hal format="hidl" override="true">
-        <name>vendor.qti.hardware.radio.lpa</name>
-        <transport>hwbinder</transport>
-    </hal>
-    <hal format="hidl" override="true">
-        <name>vendor.qti.hardware.radio.qcrilhook</name>
-        <transport>hwbinder</transport>
-    </hal>
-    <hal format="hidl" override="true">
-        <name>vendor.qti.hardware.radio.qtiradio</name>
-        <transport>hwbinder</transport>
-    </hal>
-    <hal format="hidl" override="true">
-        <name>vendor.qti.hardware.radio.uim</name>
-        <transport>hwbinder</transport>
-    </hal>
-    <hal format="hidl" override="true">
-        <name>vendor.qti.hardware.radio.uim_remote_client</name>
-        <transport>hwbinder</transport>
-    </hal>
-    <hal format="hidl" override="true">
-        <name>vendor.qti.hardware.radio.uim_remote_server</name>
-        <transport>hwbinder</transport>
     </hal>
     <hal format="hidl">
         <name>vendor.qti.hardware.tui_comm</name>
@@ -430,14 +348,6 @@
             <instance>wifiStats</instance>
         </interface>
         <fqname>@1.0::IWifiStats/wifiStats</fqname>
-    </hal>
-    <hal format="hidl" override="true">
-        <name>vendor.qti.ims.callinfo</name>
-        <transport>hwbinder</transport>
-    </hal>
-    <hal format="hidl" override="true">
-        <name>vendor.qti.imsrtpservice</name>
-        <transport>hwbinder</transport>
     </hal>
     <hal format="hidl" override="true">
         <name>vendor.qti.power.pasrmanager</name>
@@ -516,46 +426,6 @@
     <hal format="aidl">
         <name>vendor.samsung.hardware.media.converter</name>
         <fqname>ISehColorConverterStore/default</fqname>
-    </hal>
-    <hal format="hidl">
-        <name>vendor.samsung.hardware.radio</name>
-        <transport>hwbinder</transport>
-        <version>2.2</version>
-        <interface>
-            <name>ISehRadio</name>
-            <instance>slot1</instance>
-            <instance>slot2</instance>
-        </interface>
-        <fqname>@2.2::ISehRadio/slot1</fqname>
-        <fqname>@2.2::ISehRadio/slot2</fqname>
-    </hal>
-    <hal format="hidl">
-        <name>vendor.samsung.hardware.radio.bridge</name>
-        <transport>hwbinder</transport>
-        <version>2.0</version>
-        <interface>
-            <name>ISehBridge</name>
-            <instance>slot1</instance>
-            <instance>slot2</instance>
-        </interface>
-        <fqname>@2.0::ISehBridge/slot1</fqname>
-        <fqname>@2.0::ISehBridge/slot2</fqname>
-    </hal>
-    <hal format="hidl">
-        <name>vendor.samsung.hardware.radio.channel</name>
-        <transport>hwbinder</transport>
-        <version>2.0</version>
-        <interface>
-            <name>ISehChannel</name>
-            <instance>epdgd</instance>
-            <instance>epdgd2</instance>
-            <instance>imsd</instance>
-            <instance>imsd2</instance>
-        </interface>
-        <fqname>@2.0::ISehChannel/epdgd</fqname>
-        <fqname>@2.0::ISehChannel/epdgd2</fqname>
-        <fqname>@2.0::ISehChannel/imsd</fqname>
-        <fqname>@2.0::ISehChannel/imsd2</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.samsung.hardware.thermal</name>

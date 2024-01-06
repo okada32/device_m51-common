@@ -121,8 +121,12 @@ VSYNC_EVENT_PHASE_OFFSET_NS := 2000000
 HWUI_COMPILE_FOR_PERF := true
 
 # HIDL
+DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := \
+     $(COMMON_PATH)/device_compatibility_matrix.xml \
+
 DEVICE_MANIFEST_FILE := \
-    $(COMMON_PATH)/manifest.xml
+    $(COMMON_PATH)/manifest.xml \
+	$(COMMON_PATH)/qcril_manifest.xml
 
 DEVICE_MATRIX_FILE := \
     $(COMMON_PATH)/compatibility_matrix.xml
