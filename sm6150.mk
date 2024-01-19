@@ -20,7 +20,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/developer_gsi_keys.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
-$(call inherit-product, packages/apps/ViPER4AndroidFX/config.mk)
 $(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
 
 COMMON_PATH := device/samsung/sm6150-common
@@ -88,6 +87,7 @@ PRODUCT_PACKAGES += \
     libvolumelistener:32 \
 
 PRODUCT_COPY_FILES += \
+    $(COMMON_PATH)/rootdir/vendor/etc/dolby/dax-default.xml:$(TARGET_COPY_OUT_VENDOR)/etc/dolby/dax-default.xml \
     $(COMMON_PATH)/rootdir/vendor/etc/audio_effects.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.conf \
     $(COMMON_PATH)/rootdir/vendor/etc/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml \
     $(COMMON_PATH)/rootdir/vendor/etc/audio_effects_common.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects_common.conf \
@@ -173,6 +173,18 @@ PRODUCT_PACKAGES += \
 
 # Data
 $(call inherit-product, vendor/qcom/opensource/dataservices/dataservices_vendor_product.mk)
+
+# SamsungAdvancedDisplay
+#PRODUCT_PACKAGES += \
+#    AdvancedDisplay \
+
+# SamsungDAP
+PRODUCT_PACKAGES += \
+    SamsungDAP \
+
+# SamsungDoze
+#PRODUCT_PACKAGES += \
+#    SamsungDoze \
 
 # DRM
 PRODUCT_PACKAGES += \
