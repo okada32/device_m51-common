@@ -148,20 +148,17 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    android.frameworks.cameraservice.common@2.0.vendor \
-    android.frameworks.cameraservice.device@2.0.vendor \
+    android.hardware.camera.provider@2.5-service.samsung \
     android.frameworks.cameraservice.service@2.1.vendor \
-    android.hardware.camera.provider@2.7.vendor \
-    android.hardware.camera.device@3.7.vendor \
+    libgrallocusage.vendor \
+    vendor.qti.hardware.camera.device@1.0.vendor \
+    vendor.qti.hardware.camera.postproc@1.0.vendor \
+    libstdc++ \
+    libstdc++_vendor \
     libcamera2ndk_vendor \
     libdng_sdk \
     libdng_sdk.vendor \
     libgui_vendor:32 \
-    libgrallocusage.vendor \
-    libstdc++ \
-    libstdc++_vendor \
-    vendor.qti.hardware.camera.device@1.0.vendor \
-    vendor.qti.hardware.camera.postproc@1.0.vendor \
 
 # CAS
 PRODUCT_PACKAGES += \
