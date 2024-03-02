@@ -163,6 +163,12 @@ drm.service.enabled=true
 # Filesystem
 fs_mgr.overlayfs.prefer_cache_backing_storage=true
 
+# Fingerprint
+ro.vendor.fingerprint.type=side
+ro.vendor.fingerprint.sensor_location=1080|800|350
+ro.vendor.fingerprint.supports_gestures=true
+ro.vendor.fingerprint.max_enrollments=4
+
 # FM
 vendor.hw.fm.init=0
 
