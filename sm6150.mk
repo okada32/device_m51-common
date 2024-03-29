@@ -231,7 +231,6 @@ PRODUCT_PACKAGES += \
     libdrmclearkeyplugin \
     libsdmcore \
     libsdmutils \
-    libtinyxml \
     libion \
     libvulkan \
     vendor.display.config@1.11.vendor \
