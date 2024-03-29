@@ -160,6 +160,9 @@ vendor.gralloc.disable_ubwc=0
 # DRM
 drm.service.enabled=true
 
+# Filesystem
+fs_mgr.overlayfs.prefer_cache_backing_storage=true
+
 # FM
 vendor.hw.fm.init=0
 
