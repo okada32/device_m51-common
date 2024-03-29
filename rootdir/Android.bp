@@ -118,6 +118,13 @@ prebuilt_etc {
     vendor: true,
 }
 
+prebuilt_etc {
+    filename: "ueventd.rc",
+    name: "ueventd.qcom.rc",
+    src: "vendor/etc/ueventd.qcom.rc",
+    vendor: true,
+}
+
 // Ramdisk's Scripts
 
 sh_binary {
