@@ -567,7 +567,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_SOONG_NAMESPACES += \
     $(COMMON_PATH) \
     hardware/samsung \
-	hardware/google/interfaces \
+    hardware/google/interfaces \
     hardware/google/pixel \
     hardware/samsung/aidl/power-libperfmgr \
     vendor/qcom/opensource/usb/etc \
@@ -595,7 +595,7 @@ PRODUCT_PACKAGES += \
 
 # USB
 PRODUCT_PACKAGES += \
-    android.hardware.usb@1.0.vendor \
+    android.hardware.usb-service.samsung \
     android.hardware.usb@1.3-service.dual_role_usb \
     android.hardware.usb@1.1.vendor \
 
