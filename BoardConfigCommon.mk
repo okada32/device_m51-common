@@ -160,7 +160,7 @@ TARGET_HEALTH_CHARGING_CONTROL_CHARGING_DISABLED := 1
 TARGET_HEALTH_CHARGING_CONTROL_SUPPORTS_BYPASS := false
 
 # NFC
-TARGET_USES_NQ_NFC := true
+TARGET_HAVE_SEC_NFC := true
 
 # Partitions
 -include vendor/lineage/config/BoardConfigReservedSize.mk
