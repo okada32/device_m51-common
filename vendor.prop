@@ -1,3 +1,4 @@
+
 # Audio
 audio.offload.min.duration.secs=30
 persist.vendor.audio.avs.afe_api_version=2
@@ -115,17 +116,17 @@ dalvik.vm.heaptargetutilization=0.75
 # Display
 debug.sf.disable_backpressure=1
 debug.sf.disable_client_composition_cache=1
-debug.sf.hw=0
 debug.sf.enable_advanced_sf_phase_offset=1
-debug.sf.use_phase_offsets_as_durations=1
-debug.sf.late.sf.duration=10500000
-debug.sf.late.app.duration=20500000
-debug.sf.early.sf.duration=16000000
-debug.sf.early.app.duration=16500000
-debug.sf.earlyGl.sf.duration=13500000
-debug.sf.earlyGl.app.duration=21000000
+debug.sf.early_app_phase_offset_ns=100000
+debug.sf.early_phase_offset_ns=100000
+debug.sf.early_gl_app_phase_offset_ns=100000
+debug.sf.early_gl_phase_offset_ns=100000
+debug.sf.high_fps_late_app_phase_offset_ns=100000
+debug.sf.high_fps_early_gl_phase_offset_ns=100000
+debug.sf.high_fps_early_phase_offset_ns=100000
+debug.sf.high_fps_late_sf_phase_offset_ns=100000
+persist.demo.hdmirotationlock=false
 persist.sys.sf.color_saturation=1.0
-debug.sf.predict_hwc_composition_strategy=0
 ro.af.client_heap_size_kbyte=7168
 ro.surface_flinger.force_hwc_copy_for_virtual_displays=true
 ro.surface_flinger.enable_frame_rate_override=false
@@ -160,9 +161,6 @@ drm.service.enabled=true
 # Filesystem
 fs_mgr.overlayfs.prefer_cache_backing_storage=true
 
-# FUSE passthrough
-persist.sys.fuse.passthrough.enable=true
-
 # Fingerprint
 ro.vendor.fingerprint.type=side
 ro.vendor.fingerprint.sensor_location=1080|800|350
@@ -170,7 +168,6 @@ ro.vendor.fingerprint.supports_gestures=true
 ro.vendor.fingerprint.max_enrollments=4
 
 # FM
-ro.vendor.fm.use_audio_session=true
 vendor.hw.fm.init=0
 
 # Fastbootd
@@ -267,4 +264,9 @@ ro.vendor.vibrator_hal.tick_duration=40
 wifi.aware.interface=wifi-aware0
 
 # Zygote
+<<<<<<< HEAD
 zygote.critical_window.minute=10
+=======
+zygote.critical_window.minute=10
+
+>>>>>>> c27369c (a71: Get rid of regular QCOM props)
