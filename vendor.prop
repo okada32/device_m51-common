@@ -170,6 +170,7 @@ ro.vendor.fingerprint.supports_gestures=true
 ro.vendor.fingerprint.max_enrollments=4
 
 # FM
+ro.vendor.fm.use_audio_session=true
 vendor.hw.fm.init=0
 
 # Fastbootd
