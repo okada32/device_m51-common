@@ -160,6 +160,9 @@ drm.service.enabled=true
 # Filesystem
 fs_mgr.overlayfs.prefer_cache_backing_storage=true
 
+# FUSE passthrough
+persist.sys.fuse.passthrough.enable=true
+
 # Fingerprint
 ro.vendor.fingerprint.type=side
 ro.vendor.fingerprint.sensor_location=1080|800|350
