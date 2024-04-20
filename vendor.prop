@@ -204,6 +204,8 @@ audio.offload.video=true
 debug.stagefright.ccodec=1
 debug.stagefright.omx_default_rank=0
 media.settings.xml=/vendor/etc/media_profiles_vendor.xml
+ro.config.media_vol_default=8
+ro.config.media_vol_steps=25
 ro.config.vc_call_vol_steps=8
 
 # NFC
