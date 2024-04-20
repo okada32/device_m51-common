@@ -239,6 +239,9 @@ vendor.sec.rild.libpath=/vendor/lib64/libsec-ril.so
 vendor.sec.rild.libpath2=/vendor/lib64/libsec-ril-dsds.so
 persist.sys.radio.force_lte_ca=true
 
+# Sensors
+persist.vendor.sensors.enable.mag_filter=true
+
 # USB
 vendor.usb.controller=a600000.dwc3
 vendor.usb.diag.func.name=diag
