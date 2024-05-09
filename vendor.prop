@@ -259,3 +259,6 @@ wifi.aware.interface=wifi-aware0
 
 # Zygote
 zygote.critical_window.minute=10
+
+## Power HAL
+vendor.powerhal.disp.idle_support=false
