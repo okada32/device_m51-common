@@ -1,28 +1,23 @@
 /*
-** Copyright 2023, The LineageOS Project
-**
-** Licensed under the Apache License, Version 2.0 (the "License");
-** you may not use this file except in compliance with the License.
-** You may obtain a copy of the License at
-**
-**     http://www.apache.org/licenses/LICENSE-2.0
-**
-** Unless required by applicable law or agreed to in writing, software
-** distributed under the License is distributed on an "AS IS" BASIS,
-** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-** See the License for the specific language governing permissions and
-** limitations under the License.
-*/
+ * Copyright (C) 2018 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
 #define LOG_TAG "PrimaryDeviceHAL"
 
 #include "core/default/PrimaryDevice.h"
 #include "core/default/Util.h"
-
-#include <cutils/properties.h>
-#include <string.h>
-#include <chrono>
-#include <thread>
 
 #if MAJOR_VERSION >= 4
 #include <cmath>
@@ -33,6 +28,10 @@ namespace hardware {
 namespace audio {
 namespace CPP_VERSION {
 namespace implementation {
+
+namespace util {
+using namespace ::android::hardware::audio::CORE_TYPES_CPP_VERSION::implementation::util;
+}
 
 PrimaryDevice::PrimaryDevice(audio_hw_device_t* device) : mDevice(new Device(device)) {}
 
@@ -200,7 +199,7 @@ Return<void> PrimaryDevice::updateAudioPatch(int32_t previousPatch,
 
 // Methods from ::android::hardware::audio::CPP_VERSION::IPrimaryDevice follow.
 Return<Result> PrimaryDevice::setVoiceVolume(float volume) {
-    if (!isGainNormalized(volume)) {
+    if (!util::isGainNormalized(volume)) {
         ALOGW("Can not set a voice volume (%f) outside [0,1]", volume);
         return Result::INVALID_ARGUMENTS;
     }
@@ -209,35 +208,6 @@ Return<Result> PrimaryDevice::setVoiceVolume(float volume) {
 }
 
 Return<Result> PrimaryDevice::setMode(AudioMode mode) {
-    /* On stock ROM Samsung sets the g_call_state and g_call_sim_slot audio parameters
-     * in the framework, breaking it on AOSP ROMs. For the audio params call_state and
-     * g_call_state 2 corresponds to CALL_ACTIVE and 1 to CALL_INACTIVE respectively.
-     * For the g_call_sim_slot parameter 0x01 describes SIM1 and 0x02 SIM2.
-     */
-
-    char simSlot[92];
-
-    // This prop returns either -1 (no SIM is calling),
-    // 0 (SIM1 is calling) or 1 (SIM2 is calling)
-    property_get("vendor.calls.slotid", simSlot, "");
-
-    // Wait until RIL reports which SIM is being used
-    while (strcmp(simSlot, "-1") == 0 && mode == AudioMode::IN_CALL) {
-        std::this_thread::sleep_for(std::chrono::milliseconds(50));
-        property_get("vendor.calls.slotid", simSlot, "");
-    }
-
-    if (strcmp(simSlot, "0") == 0) {
-        // SIM1
-        mDevice->halSetParameters("call_state=2;g_call_state=2;g_call_sim_slot=0x01");
-    } else if (strcmp(simSlot, "1") == 0) {
-        // SIM2
-        mDevice->halSetParameters("call_state=2;g_call_state=2;g_call_sim_slot=0x02");
-    } else if (strcmp(simSlot, "-1") == 0) {
-        // No call
-        mDevice->halSetParameters("call_state=1;g_call_state=1");
-    }
-
     // INVALID, CURRENT, CNT, MAX are reserved for internal use.
     // TODO: remove the values from the HIDL interface
     switch (mode) {
@@ -360,7 +330,7 @@ Return<Result> PrimaryDevice::setBtHfpSampleRate(uint32_t sampleRateHz) {
     return mDevice->setParam(AUDIO_PARAMETER_KEY_HFP_SET_SAMPLING_RATE, int(sampleRateHz));
 }
 Return<Result> PrimaryDevice::setBtHfpVolume(float volume) {
-    if (!isGainNormalized(volume)) {
+    if (!util::isGainNormalized(volume)) {
         ALOGW("Can not set BT HFP volume (%f) outside [0,1]", volume);
         return Result::INVALID_ARGUMENTS;
     }

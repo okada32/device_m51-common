@@ -1,18 +1,18 @@
 /*
-** Copyright 2023, The LineageOS Project
-**
-** Licensed under the Apache License, Version 2.0 (the "License");
-** you may not use this file except in compliance with the License.
-** You may obtain a copy of the License at
-**
-**     http://www.apache.org/licenses/LICENSE-2.0
-**
-** Unless required by applicable law or agreed to in writing, software
-** distributed under the License is distributed on an "AS IS" BASIS,
-** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-** See the License for the specific language governing permissions and
-** limitations under the License.
-*/
+ * Copyright (C) 2018 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
 #ifndef ANDROID_HARDWARE_AUDIO_STREAMOUT_H
 #define ANDROID_HARDWARE_AUDIO_STREAMOUT_H
@@ -43,7 +43,8 @@ using ::android::hardware::hidl_string;
 using ::android::hardware::hidl_vec;
 using ::android::hardware::Return;
 using ::android::hardware::Void;
-using namespace ::android::hardware::audio::common::CPP_VERSION;
+using namespace ::android::hardware::audio::common::COMMON_TYPES_CPP_VERSION;
+using namespace ::android::hardware::audio::CORE_TYPES_CPP_VERSION;
 using namespace ::android::hardware::audio::CPP_VERSION;
 
 struct StreamOut : public IStreamOut {
@@ -152,6 +153,12 @@ struct StreamOut : public IStreamOut {
     Result doUpdateSourceMetadata(const SourceMetadata& sourceMetadata);
 #if MAJOR_VERSION >= 7
     Result doUpdateSourceMetadataV7(const SourceMetadata& sourceMetadata);
+#if MAJOR_VERSION == 7 && MINOR_VERSION == 1
+    Return<Result> setLatencyMode(LatencyMode mode) override;
+    Return<void> getRecommendedLatencyModes(getRecommendedLatencyModes_cb _hidl_cb) override;
+    Return<Result> setLatencyModeCallback(
+            const sp<IStreamOutLatencyModeCallback>& callback) override;
+#endif
 #endif
 #endif  // MAJOR_VERSION >= 4
 
@@ -162,6 +169,9 @@ struct StreamOut : public IStreamOut {
     mediautils::atomic_sp<IStreamOutCallback> mCallback;  // for non-blocking write and drain
 #if MAJOR_VERSION >= 6
     mediautils::atomic_sp<IStreamOutEventCallback> mEventCallback;
+#if MAJOR_VERSION == 7 && MINOR_VERSION == 1
+    mediautils::atomic_sp<IStreamOutLatencyModeCallback> mLatencyModeCallback;
+#endif
 #endif
     std::unique_ptr<CommandMQ> mCommandMQ;
     std::unique_ptr<DataMQ> mDataMQ;
@@ -176,6 +186,9 @@ struct StreamOut : public IStreamOut {
 
 #if MAJOR_VERSION >= 6
     static int asyncEventCallback(stream_event_callback_type_t event, void* param, void* cookie);
+#if MAJOR_VERSION == 7 && MINOR_VERSION == 1
+    static void latencyModeCallback(audio_latency_mode_t* modes, size_t num_modes, void* cookie);
+#endif
 #endif
 };
 
