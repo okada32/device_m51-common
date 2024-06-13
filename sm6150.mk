@@ -62,7 +62,8 @@ PRODUCT_PACKAGES += \
     libqcomvisualizer \
     libqcomvoiceprocessing \
     libqcompostprocbundle \
-    libvolumelistener
+    libvolumelistener \
+   libprocessgroup.vendor
 
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/audio/audio_configs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_configs.xml \
@@ -95,6 +96,7 @@ PRODUCT_PACKAGES += \
 # Camera
 PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.5-service.samsung \
+    libcamera_metadata.vendor \
     android.frameworks.cameraservice.service@2.1.vendor \
     libgrallocusage.vendor \
     vendor.qti.hardware.camera.device@1.0.vendor \
@@ -372,7 +374,8 @@ PRODUCT_COPY_FILES += \
 # Protobuf
 PRODUCT_PACKAGES += \
     libprotobuf-cpp-full-3.9.1-vendorcompat \
-    libprotobuf-cpp-lite-3.9.1-vendorcompat \
+    libprotobuf-cpp-full-3.9.1-vendorcompat \
+    libsqlite.vendor
 
 # Public Libraries
 PRODUCT_COPY_FILES += \
@@ -387,6 +390,7 @@ PRODUCT_PACKAGES += \
     libqti_vndfwk_detect.vendor \
     libvndfwk_detect_jni.qti \
     libvndfwk_detect_jni.qti.vendor \
+    libjsoncpp.vendor
 
 # QTI
 PRODUCT_COPY_FILES += \
