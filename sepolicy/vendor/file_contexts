@@ -234,4 +234,3 @@
 
 # Wakeup
 /sys/devices/platform/(.*)/wakeup[0-9]*(/.*)?			u:object_r:sysfs_wakeup:s0
-/sys/devices/platform/(.*)/wakeup[0-9]*(/.*)?			u:object_r:sysfs_wakeup:s0
