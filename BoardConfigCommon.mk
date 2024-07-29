@@ -155,6 +155,7 @@ BOARD_SUPER_PARTITION_GROUPS := samsung_dynamic_partitions
 BOARD_SAMSUNG_DYNAMIC_PARTITIONS_SIZE := 10380902400
 BOARD_SAMSUNG_DYNAMIC_PARTITIONS_PARTITION_LIST := \
     system \
+    system_ext \
     product \
     vendor \
     odm \
@@ -171,7 +172,7 @@ BOARD_USES_METADATA_PARTITION := true
 
 TARGET_COPY_OUT_ODM := odm
 TARGET_COPY_OUT_PRODUCT := product
-TARGET_COPY_OUT_SYSTEM_EXT := system/system_ext
+TARGET_COPY_OUT_SYSTEM_EXT := system_ext
 TARGET_COPY_OUT_VENDOR := vendor
 
 # Platform
