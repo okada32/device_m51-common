@@ -199,6 +199,10 @@ PRODUCT_PACKAGES += \
     android.hardware.health@2.1.vendor \
     vendor.lineage.health-service.default \
 
+# Configstore
+PRODUCT_PACKAGES += \
+    disable_configstore
+
 # HIDL
 PRODUCT_PACKAGES += \
     android.hidl.base@1.0 \
