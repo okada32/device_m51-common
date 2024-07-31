@@ -17,6 +17,5 @@
 runtime_resource_overlay {
     name: "SoftapOverlay",
     theme: "SoftapOverlay",
-    sdk_version: "current",
     vendor: true
 }

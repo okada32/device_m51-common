@@ -20,6 +20,5 @@ package {
 
 runtime_resource_overlay {
     name: "ConnectivityOverlay",
-    sdk_version: "current",
     vendor: true
 }
