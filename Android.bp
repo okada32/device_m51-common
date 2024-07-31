@@ -15,6 +15,9 @@
 //
 
 soong_namespace {
+    imports: [
+        "hardware/qcom-caf/common/libqti-perfd-client",
+    ],
 }
 
 install_symlink {

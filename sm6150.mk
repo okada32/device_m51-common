@@ -507,6 +507,7 @@ PRODUCT_COPY_FILES += \
 # Soong Namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(COMMON_PATH) \
+    hardware/qcom-caf/common/libqti-perfd-client \
     hardware/samsung \
     hardware/google/interfaces \
     hardware/google/pixel \
