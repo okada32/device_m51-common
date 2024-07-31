@@ -95,7 +95,6 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    android.hardware.camera.provider@2.5-service.samsung \
     libcamera_metadata.vendor \
     android.frameworks.cameraservice.service@2.1.vendor \
     libgrallocusage.vendor \
