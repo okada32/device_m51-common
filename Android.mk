@@ -73,13 +73,6 @@ $(WLANMDSP_SYMLINK): $(LOCAL_INSTALLED_MODULE)
 	@rm -rf $@
 	$(hide) ln -sf /vendor/firmware_mnt/image/$(notdir $@) $@
 
-WCNSS_INI_SYMLINK := $(TARGET_OUT_VENDOR)/firmware/wlan/qca_cld/WCNSS_qcom_cfg.ini
-$(WCNSS_INI_SYMLINK): $(LOCAL_INSTALLED_MODULE)
-	@echo "WCNSS config ini link: $@"
-	@mkdir -p $(dir $@)
-	@rm -rf $@
-	$(hide) ln -sf /vendor/etc/wifi/$(notdir $@) $@
-
 WCNSS_MAC_SYMLINK := $(TARGET_OUT_VENDOR)/firmware/wlan/qca_cld/wlan_mac.bin
 $(WCNSS_MAC_SYMLINK): $(LOCAL_INSTALLED_MODULE)
 	@echo "WCNSS MAC bin link: $@"
@@ -87,7 +80,7 @@ $(WCNSS_MAC_SYMLINK): $(LOCAL_INSTALLED_MODULE)
 	@rm -rf $@
 	$(hide) ln -sf /mnt/vendor/persist/$(notdir $@) $@
 
-ALL_DEFAULT_INSTALLED_MODULES += $(WLANMDSP_SYMLINK) $(WCNSS_INI_SYMLINK) $(WCNSS_MAC_SYMLINK)
+ALL_DEFAULT_INSTALLED_MODULES += $(WLANMDSP_SYMLINK) $(WCNSS_MAC_SYMLINK)
 
 EGL_SYMLINK := $(TARGET_OUT_VENDOR)/lib/libGLESv2_adreno.so
 $(EGL_SYMLINK): $(LOCAL_INSTALLED_MODULE)
