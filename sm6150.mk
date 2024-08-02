@@ -32,11 +32,7 @@ PRODUCT_BUILD_SUPER_PARTITION := false
 PRODUCT_SET_DEBUGFS_RESTRICTIONS := true
 PRODUCT_SHIPPING_API_LEVEL := 29
 PRODUCT_TARGET_VNDK_VERSION := 30
-ifeq ($(TARGET_USE_DYNAMIC_PARTITIONS),true)
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
-else
-PRODUCT_USE_DYNAMIC_PARTITIONS := false
-endif
 
 # AID/fs configs
 PRODUCT_PACKAGES += \
@@ -414,8 +410,8 @@ PRODUCT_COPY_FILES += \
 
 # Ramdisk
 PRODUCT_PACKAGES += \
-    fstab.qcom \
-    fstab.qcom_ramdisk \
+    fstab.default \
+    fstab.default_ramdisk \
     fingerprint_common.rc \
     init.fingerprint.rc \
     init.qcom.factory.rc \
@@ -447,14 +443,6 @@ PRODUCT_PACKAGES += \
     init.qcom.sh \
     init.qcom.usb.sh \
     init.qti.chg_policy.sh \
-
-ifeq ($(TARGET_USE_DYNAMIC_PARTITIONS),true)
-
-PRODUCT_PACKAGES += \
-    fstab.qcom \
-    fstab.qcom_ramdisk \
-
-endif
 
 # Recovery
 AB_OTA_UPDATER := false
