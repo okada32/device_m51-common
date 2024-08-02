@@ -1,5 +1,7 @@
 allow hal_audio_default hal_bluetooth_a2dp_hwservice:hwservice_manager { add find };
 
+allow hal_audio_default efs_file:dir { ioctl read getattr lock open watch watch_reads search };
+
 allow hal_audio_default imei_efs_file:dir search;
 allow hal_audio_default imei_efs_file:file { read open getattr };
 
