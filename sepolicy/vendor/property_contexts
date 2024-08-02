@@ -6,6 +6,9 @@ persist.vendor.bt.                               u:object_r:vendor_bluetooth_pro
 vendor.bluetooth_fw_ver                          u:object_r:vendor_bluetooth_prop:s0
 vendor.bluetooth_nv_ver                          u:object_r:vendor_bluetooth_prop:s0
 
+# CNE
+persist.vendor.cne                               u:object_r:vendor_cnd_prop:s0
+
 # Fingerprint
 vendor.finger.down                               u:object_r:vendor_fingerprint_prop:s0
 
