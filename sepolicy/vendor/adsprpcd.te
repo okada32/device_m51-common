@@ -1,0 +1,3 @@
+allow vendor_adsprpcd vendor_sysfs_sensors:dir { ioctl read getattr lock open watch watch_reads search };
+allow vendor_adsprpcd vendor_sysfs_sensors:file { ioctl read getattr lock map open watch watch_reads };
+allow vendor_adsprpcd vendor_sysfs_sensors:lnk_file { ioctl read getattr lock map open watch watch_reads };
