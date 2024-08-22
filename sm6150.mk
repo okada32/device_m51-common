@@ -524,7 +524,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.wifi-service \
     ConnectivityOverlay \
-    firmware_WCNSS_qcom_cfg.ini_symlink \
     hostapd \
     libkeystore-engine-wifi-hidl \
     libkeystore-wifi-hidl \
