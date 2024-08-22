@@ -21,6 +21,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/non_ab_device.mk)
 $(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
+$(call inherit-product, hardware/qcom-caf/common/common.mk)
 
 COMMON_PATH := device/samsung/sm6150-common
 
@@ -190,10 +191,6 @@ PRODUCT_PACKAGES += \
     android.hardware.health@2.1-service \
     android.hardware.health@2.1.vendor \
     vendor.lineage.health-service.default \
-
-# CNE
-PRODUCT_PACKAGES += \
-    CneApp.libvndfwk_detect_jni.qti_vendor_symlink \
 
 # Configstore
 PRODUCT_PACKAGES += \
@@ -527,6 +524,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.wifi-service \
     ConnectivityOverlay \
+    firmware_WCNSS_qcom_cfg.ini_symlink \
     hostapd \
     libkeystore-engine-wifi-hidl \
     libkeystore-wifi-hidl \
