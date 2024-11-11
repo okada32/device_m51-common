@@ -1,23 +1,24 @@
 <manifest version="2.0" type="device" target-level="5">
+    <kernel target-level="5"/>
     <hal format="hidl">
         <name>android.hardware.audio</name>
         <transport>hwbinder</transport>
-        <version>7.0</version>
+        <version>6.0</version>
         <interface>
             <name>IDevicesFactory</name>
             <instance>default</instance>
         </interface>
-        <fqname>@7.0::IDevicesFactory/default</fqname>
+        <fqname>@6.0::IDevicesFactory/default</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.audio.effect</name>
         <transport>hwbinder</transport>
-        <version>7.0</version>
+        <version>6.0</version>
         <interface>
             <name>IEffectsFactory</name>
             <instance>default</instance>
         </interface>
-        <fqname>@7.0::IEffectsFactory/default</fqname>
+        <fqname>@6.0::IEffectsFactory/default</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.biometrics.face</name>
@@ -69,16 +70,6 @@
         </interface>
         <fqname>@4.0::IKeymasterDevice/default</fqname>
     </hal>
-    <hal format="hidl">
-        <name>android.hardware.media.c2</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IComponentStore</name>
-            <instance>default</instance>
-            <instance>software</instance>
-        </interface>
-   </hal>
     <hal format="hidl">
         <name>android.hardware.media.omx</name>
         <transport>hwbinder</transport>
@@ -140,30 +131,10 @@
         <name>android.hardware.radio.deprecated</name>
         <transport>hwbinder</transport>
     </hal>
-    <hal format="hidl">
-        <name>android.hardware.renderscript</name>
-        <transport arch="32+64">passthrough</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IDevice</name>
-            <instance>default</instance>
-        </interface>
-        <fqname>@1.0::IDevice/default</fqname>
-    </hal>
     <hal format="hidl" override="true">
         <name>android.hardware.secure_element</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
-    </hal>
-    <hal format="hidl">
-        <name>android.hardware.soundtrigger</name>
-        <transport>hwbinder</transport>
-        <version>2.2</version>
-        <interface>
-            <name>ISoundTriggerHw</name>
-            <instance>default</instance>
-        </interface>
-        <fqname>@2.2::ISoundTriggerHw/default</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.tetheroffload.control</name>
@@ -236,6 +207,16 @@
         <fqname>@2.0::IAdaptiveBacklight/default</fqname>
         <fqname>@2.0::IDisplayColorCalibration/default</fqname>
         <fqname>@2.0::ISunlightEnhancement/default</fqname>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.nxp.nxpnfclegacy</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>INxpNfcLegacy</name>
+            <instance>default</instance>
+        </interface>
+        <fqname>@1.0::INxpNfcLegacy/default</fqname>
     </hal>
     <hal format="hidl" override="true">
         <name>vendor.qti.data.factory</name>
@@ -464,15 +445,6 @@
         </interface>
         <fqname>@2.0::ISehGnss/default</fqname>
     </hal>
-    <hal format="hidl">
-        <name>vendor.samsung.hardware.health</name>
-        <transport>hwbinder</transport>
-        <version>2.0</version>
-        <interface>
-            <name>ISehHealth</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
     <hal format="aidl">
         <name>vendor.samsung.hardware.media.converter</name>
         <fqname>ISehColorConverterStore/default</fqname>
@@ -526,5 +498,4 @@
             <instance>default</instance>
         </interface>
     </hal>
-    <kernel target-level="5"/>
 </manifest>

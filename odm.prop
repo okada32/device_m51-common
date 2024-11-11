@@ -1,2 +1,6 @@
+# Audio
+vendor.audio.feature.compr_voip.enable=true
+vendor.voice.path.for.pcm.voip=true
+
 # QC Value Addons
 ro.vendor.qti.va_odm.support=1

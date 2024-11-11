@@ -1,3 +1,9 @@
+//
+// Copyright (C) 2024 The LineageOS Project
+//
+// SPDX-License-Identifier: Apache-2.0
+//
+
 filegroup {
     name: "android.hardware.audio-impl_sm6150_srcs",
     srcs: [
@@ -48,6 +54,7 @@ cc_defaults {
     header_libs: [
         "android.hardware.audio-impl_sm6150_headers",
         "android.hardware.audio.common.util@all-versions",
+        "libaudioclient_headers",
         "libaudioutils_headers",
         "libaudio_system_headers",
         "libhardware_headers",
@@ -68,7 +75,7 @@ cc_library_shared {
         "android.hardware.audio@2.0-util",
         "android.hardware.audio.common@2.0",
         "android.hardware.audio.common@2.0-util",
-	    "libcutils",
+        "libcutils",
     ],
     cflags: [
         "-DMAJOR_VERSION=2",
@@ -86,7 +93,7 @@ cc_library_shared {
         "android.hardware.audio@4.0-util",
         "android.hardware.audio.common@4.0",
         "android.hardware.audio.common@4.0-util",
-	    "libcutils",
+        "libcutils",
     ],
     cflags: [
         "-DMAJOR_VERSION=4",
@@ -103,7 +110,7 @@ cc_library_shared {
         "android.hardware.audio@5.0-util",
         "android.hardware.audio.common@5.0",
         "android.hardware.audio.common@5.0-util",
-	    "libcutils",
+        "libcutils",
     ],
     cflags: [
         "-DMAJOR_VERSION=5",
@@ -120,7 +127,7 @@ cc_library_shared {
         "android.hardware.audio@6.0-util",
         "android.hardware.audio.common@6.0",
         "android.hardware.audio.common@6.0-util",
-	    "libcutils",
+        "libcutils",
     ],
     cflags: [
         "-DMAJOR_VERSION=6",
@@ -139,33 +146,11 @@ cc_library_shared {
         "android.hardware.audio.common@7.0-enums",
         "android.hardware.audio.common@7.0-util",
         "libbase",
-	    "libcutils",
+        "libcutils",
     ],
     cflags: [
         "-DMAJOR_VERSION=7",
         "-DMINOR_VERSION=0",
-        "-include common/all-versions/VersionMacro.h",
-    ],
-}
-
-cc_library_shared {
-    name: "android.hardware.audio@7.1-impl.sm6150",
-    defaults: ["android.hardware.audio-impl_sm6150"],
-    shared_libs: [
-        "android.hardware.audio@7.0",
-        "android.hardware.audio@7.1",
-        "android.hardware.audio@7.1-util",
-        "android.hardware.audio.common@7.0",
-        "android.hardware.audio.common@7.1-enums",
-        "android.hardware.audio.common@7.1-util",
-        "libbase",
-	    "libcutils",
-    ],
-    cflags: [
-        "-DMAJOR_VERSION=7",
-        "-DMINOR_VERSION=1",
-        "-DCOMMON_TYPES_MINOR_VERSION=0",
-        "-DCORE_TYPES_MINOR_VERSION=0",
         "-include common/all-versions/VersionMacro.h",
     ],
 }

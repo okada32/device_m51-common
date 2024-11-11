@@ -25,7 +25,6 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
-import /vendor/etc/init/hw/init.qti.ufs.rc
 import /vendor/etc/init/hw/init.qcom.usb.rc
 import /vendor/etc/init/hw/init.qcom.test.rc
 import /vendor/etc/init/hw/init.target.rc
@@ -135,30 +134,12 @@ on early-boot
     chmod 0664 /mnt/vendor/persist/data/pfm/licenses/store_4
 
 on boot
-    #chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
-    #chown bluetooth net_bt /sys/class/rfkill/rfkill0/type
-    #chown bluetooth net_bt /sys/class/rfkill/rfkill0/state
-    #chown bluetooth bluetooth /proc/bluetooth/sleep/proto
-    #chown bluetooth bluetooth /sys/module/hci_uart/parameters/ath_lpm
-    #chown bluetooth bluetooth /sys/module/hci_uart/parameters/ath_btwrite
-    #chown system system /sys/module/sco/parameters/disable_esco
-    #chown bluetooth bluetooth /sys/module/hci_smd/parameters/hcismd_set
     chown system system /sys/module/msm_core/parameters/polling_interval
     chown system system /sys/module/msm_core/parameters/disabled
     chown system system /sys/kernel/debug/msm_core/enable
     chown system system /sys/kernel/debug/msm_core/ptable
     chown system system /sys/kernel/boot_slpi/ssr
     chown system system /sys/kernel/boot_adsp/ssr
-    #chown system system /sys/module/radio_iris_transport/parameters/fmsmd_set
-    #chmod 0660 /sys/module/bluetooth_power/parameters/power
-    #chmod 0660 /sys/module/hci_smd/parameters/hcismd_set
-    #chmod 0660 /sys/module/radio_iris_transport/parameters/fmsmd_set
-    #chmod 0660 /sys/class/rfkill/rfkill0/state
-    #chmod 0660 /proc/bluetooth/sleep/proto
-    #chown bluetooth net_bt /dev/ttyHS0
-    #chmod 0660 /sys/module/hci_uart/parameters/ath_lpm
-    #chmod 0660 /sys/module/hci_uart/parameters/ath_btwrite
-    #chmod 0660 /dev/ttyHS0
     chown bluetooth bluetooth /sys/devices/platform/msm_serial_hs.0/clock
     chmod 0660 /sys/devices/platform/msm_serial_hs.0/clock
 
@@ -196,7 +177,6 @@ on boot
 
     # Camera motor permission
     chown system system /sys/class/sec/sliding_motor/enable
-
 
 # Sensor
     chown system system /sys/kernel/boot_slpi/cmd
@@ -630,9 +610,6 @@ on post-fs-data
     # Prevents permission denied error for telephony
     chmod 0644 /proc/cmdline
 
-    # Prevents permission denied error for gatekeeper to avoid wrong pin & locked storage issues
-    mkdir /data/vendor/gatekeeper 0770 system system
-
 service nqnfcinfo /system/vendor/bin/nqnfcinfo
     class late_start
     group nfc
@@ -759,11 +736,6 @@ service qmiproxy /system/bin/qmiproxy
     user radio
     group radio diag
     disabled
-
-service factory_ssc /vendor/bin/factory.ssc
-    class core
-    user system
-    group system radio inet diag net_admin net_raw sdcard_rw sdcard_r media_rw
 
 # Adjust socket buffer to enlarge TCP receive window for high bandwidth
 # but only if ro.data.large_tcp_window_size property is set.
@@ -920,11 +892,6 @@ service qcom-sh /vendor/bin/init.qcom.sh
     user root
     group root system radio
     oneshot
-# Remove since is deprecated but throws AVC denial.
-# service crashdata-sh /vendor/bin/init.qcom.crashdata.sh
-#    class late_start
-#    user root
-#    oneshot
 
 service qcom-post-boot /vendor/bin/init.qcom.post_boot.sh
     class late_start
@@ -932,14 +899,6 @@ service qcom-post-boot /vendor/bin/init.qcom.post_boot.sh
     group root system wakelock graphics
     disabled
     oneshot
-
-#    do not run the script for treble-based model
-#service qti-testscripts /system/bin/sh /product/etc/init.qcom.testscripts.sh
-#    class late_start
-#    user root
-#    disabled
-#    oneshot
-#    seclabel u:r:qti-testscripts:s0
 
 service wifi-sdio-on /vendor/bin/init.qcom.sdio.sh
     class late_start
@@ -1007,13 +966,6 @@ service profiler_daemon /system/bin/profiler_daemon
     user root
     group root
     disabled
-
-service charger /system/bin/charger
-    class charger
-    user system
-    group system graphics input
-    capabilities SYS_BOOT
-    seclabel u:r:charger:s0
 
 service vendor.ssr_diag /system/vendor/bin/ssr_diag
     class late_start
@@ -1093,8 +1045,7 @@ service esepmdaemon /system/vendor/bin/esepmdaemon
     user system
     group nfc
 
-on charger
-#    setprop persist.sys.usb.config mass_storage
+on property:init.svc.vendor.charger=running
     start qcom-post-boot
 
 #add poweroffhandler
@@ -1104,12 +1055,6 @@ service poweroffhandler /system/vendor/bin/poweroffhandler
     group graphics audio
     disabled
     oneshot
-
-# service time_daemon /vendor/bin/time_daemon
-#    class main
-#    user system
-#    group system
-#    capabilities SYS_TIME
 
 # Set vendor-ril lib path based on Meta version
 on property:vendor.rild.libpath=*
@@ -1124,29 +1069,6 @@ service vendor.power_off_alarm /vendor/bin/power_off_alarm
     disabled
     oneshot
 
-#service vendor.hbtp /vendor/bin/hbtp_daemon
-#     class main
-#     user system
-#     group system
-#     capabilities SYS_NICE
-#     disabled
-
-#service chre /vendor/bin/chre
-#    class late_start
-#    user system
-#    group system
-#    socket chre seqpacket 0660 root system
-#    shutdown critical
-
-#on property:vendor.chre.enabled=0
-#   stop chre
-
-service bugreport /system/bin/dumpstate -d -p -B -z -o /data/user_de/0/com.android.shell/files/bugreports/bugreport
-    class main
-    disabled
-    oneshot
-    keycodes 114 115 116
-
 #Set GPU Opengles version
 on property:vendor.opengles.version=*
     setprop ro.opengles.version ${vendor.opengles.version}
@@ -1154,21 +1076,3 @@ on property:vendor.opengles.version=*
 #Set gpu available frequencies property
 on property:vendor.gpu.available_frequencies=*
     setprop ro.vendor.gpu.available_frequencies ${vendor.gpu.available_frequencies}
-
-on property:vendor.post_boot.parsed=1
-    # Setup permission for powerHAL
-    chown system system /dev/stune/top-app/schedtune.boost
-    chown system system /sys/class/kgsl/kgsl-3d0/devfreq/min_freq
-    chown system system /sys/class/kgsl/kgsl-3d0/devfreq/max_freq
-    chown system system /sys/class/devfreq/soc:qcom,gpubw/min_freq
-
-service vendor.audio-hal /vendor/bin/hw/android.hardware.audio.service
-    override
-    class hal
-    user audioserver
-    # media gid needed for /dev/fm (radio) and for /data/misc/media (tee)
-    group audio camera drmrpc inet media mediadrm net_bt net_bt_admin net_bw_acct oem_2901 wakelock
-    capabilities BLOCK_SUSPEND
-    ioprio rt 4
-    task_profiles ProcessCapacityHigh HighPerformance
-    onrestart restart audioserver

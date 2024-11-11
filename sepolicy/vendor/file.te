@@ -47,31 +47,14 @@ type proc_reset_reason, fs_type, proc_type;
 type proc_simslot_count, fs_type, proc_type;
 type proc_swappiness, fs_type, proc_type;
 
-# Rootfs
-type carrier_file, fs_type;
-allow carrier_file labeledfs:filesystem associate;
-
-type dqmdbgblk_file, fs_type;
-allow dqmdbgblk_file labeledfs:filesystem associate;
-
-type keydata_data_file, fs_type;
-allow keydata_data_file labeledfs:filesystem associate;
-
-type keyrefuge_data_file, fs_type;
-allow keyrefuge_data_file labeledfs:filesystem associate;
-
-type omr_file, file_type, mlstrustedobject;
-
-type spu_file, fs_type;
-allow spu_file labeledfs:filesystem associate;
-
 # SysFS
+type sysfs_camera, sysfs_type, r_fs_type, fs_type;
 type sysfs_fingerprint, sysfs_type, r_fs_type, fs_type;
 type sysfs_fpc, sysfs_type, r_fs_type, fs_type;
 type sysfs_iio, sysfs_type, r_fs_type, fs_type;
 type sysfs_input, sysfs_type, r_fs_type, fs_type;
 type sysfs_sec_key, sysfs_type, r_fs_type, fs_type;
-type sysfs_sec_switch, sysfs_type, r_fs_type, fs_type;
+type sysfs_sec_switch, fs_type, sysfs_type;
 type sysfs_sec_touchscreen, sysfs_type, r_fs_type, fs_type;
 type sysfs_sensors, sysfs_type, r_fs_type, fs_type;
 type sysfs_virtual, sysfs_type, r_fs_type, fs_type;
@@ -80,6 +63,7 @@ type sysfs_wifi, sysfs_type, r_fs_type, fs_type;
 # SysFS RW
 type sysfs_audio_writable, sysfs_type, rw_fs_type, fs_type;
 type sysfs_battery_writable, sysfs_type, rw_fs_type, fs_type;
+type sysfs_camera_writable, sysfs_type, rw_fs_type, fs_type;
 type sysfs_lcd_writable, sysfs_type, rw_fs_type, fs_type;
 type sysfs_mdnie_writable, sysfs_type, rw_fs_type, fs_type;
 type sysfs_power_writable, sysfs_type, rw_fs_type, fs_type;

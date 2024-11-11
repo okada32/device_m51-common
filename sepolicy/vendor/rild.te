@@ -48,5 +48,3 @@ dontaudit rild {
 }:file read;
 
 dontaudit rild default_prop:property_service set;
-
-get_prop(rild, csc_prop)

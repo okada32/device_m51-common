@@ -38,6 +38,8 @@ on early-init
 on init
     symlink /dev/block/bootdevice/by-name/steady  /dev/block/steady
     symlink /dev/block/bootdevice/by-name/persistent  /dev/block/persistent
+    
+    chown system radio /sys/class/sec/switch/afc_disable
 
 # Create carrier folder for HiddenMenu
 on post-fs
@@ -67,13 +69,15 @@ on post-fs
 on post-fs-data
     #argos
     chown system system /dev/network_throughput
+
+    mkdir /data/vendor/gatekeeper 0770 system system
 	
 # Camera Boost
     chown cameraserver cameraserver /sys/kernel/mm/vmscan/mem_boost_mode
 
 on early-boot
  # Permissions for Touchscreen
-    chown system system /sys/class/sec/tsp/cmd
+    chown system radio /sys/class/sec/tsp/cmd
     chown system system /sys/class/sec/tsp/input/enabled
     chmod 0660 /sys/class/sec/tsp/input/enabled
     chown system system /sys/class/sec/tsp/input/fod_pressed
@@ -170,7 +174,3 @@ service factory_ssc /vendor/bin/factory.ssc
 
 on property:sys.boot_completed=1
     start argos-daemon
-
-# initialize powerHAL when boot is completed
-on property:sys.boot_completed=1
-   setprop vendor.powerhal.init 1

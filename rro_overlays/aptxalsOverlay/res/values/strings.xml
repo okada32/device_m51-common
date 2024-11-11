@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+ * Copyright (C) 2024 The LineageOS Project
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+-->
 <resources>
     <string name="a2dp_offload_enabled">true</string>
     <string name="refresh_audio_profile_count_enabled">false</string>

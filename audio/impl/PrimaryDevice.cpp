@@ -1,17 +1,7 @@
 /*
- * Copyright (C) 2018 The Android Open Source Project
+ * Copyright (C) 2024 The LineageOS Project
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 #define LOG_TAG "PrimaryDeviceHAL"
@@ -21,6 +11,8 @@
 
 #include <cutils/properties.h>
 #include <string.h>
+#include <chrono>
+#include <thread>
 
 #if MAJOR_VERSION >= 4
 #include <cmath>
@@ -31,10 +23,6 @@ namespace hardware {
 namespace audio {
 namespace CPP_VERSION {
 namespace implementation {
-
-namespace util {
-using namespace ::android::hardware::audio::CORE_TYPES_CPP_VERSION::implementation::util;
-}
 
 PrimaryDevice::PrimaryDevice(audio_hw_device_t* device) : mDevice(new Device(device)) {}
 
@@ -202,7 +190,7 @@ Return<void> PrimaryDevice::updateAudioPatch(int32_t previousPatch,
 
 // Methods from ::android::hardware::audio::CPP_VERSION::IPrimaryDevice follow.
 Return<Result> PrimaryDevice::setVoiceVolume(float volume) {
-    if (!util::isGainNormalized(volume)) {
+    if (!isGainNormalized(volume)) {
         ALOGW("Can not set a voice volume (%f) outside [0,1]", volume);
         return Result::INVALID_ARGUMENTS;
     }
@@ -211,31 +199,34 @@ Return<Result> PrimaryDevice::setVoiceVolume(float volume) {
 }
 
 Return<Result> PrimaryDevice::setMode(AudioMode mode) {
-	 /* On stock ROM Samsung sets the g_call_state and g_call_sim_slot audio parameters
+    /* On stock ROM Samsung sets the g_call_state and g_call_sim_slot audio parameters
      * in the framework, breaking it on AOSP ROMs.
      * For the g_call_sim_slot parameter 0x01 describes SIM1 and 0x02 SIM2.
      */
 
-    char simSlot[92];
+    char simSlot1[92], simSlot2[92];
 
-    // These props return either -1 (not calling),
-    // 0 (SIM1 is calling) or 1 (SIM2 is calling)
-    property_get("vendor.calls.slotid", simSlot, "");
+    // These props return either 0 (not calling),
+    // or 1 (SIM is calling)
+    property_get("vendor.calls.slot_id0", simSlot1, "");
+    property_get("vendor.calls.slot_id1", simSlot2, "");
 
     // Wait until one sim slot reports a call
     if (mode == AudioMode::IN_CALL) {
-        while (strcmp(simSlot, "-1") == 0) {
-            property_get("vendor.calls.slotid", simSlot, "");
+        while (strcmp(simSlot1, "0") == 0 && strcmp(simSlot2, "0") == 0) {
+            property_get("vendor.calls.slot_id0", simSlot1, "");
+            property_get("vendor.calls.slot_id1", simSlot2, "");
         }
     }
 
-    if (strcmp(simSlot, "0") == 0) {
+    if (strcmp(simSlot1, "1") == 0) {
         // SIM1
         mDevice->halSetParameters("g_call_sim_slot=0x01");
-    } else if (strcmp(simSlot, "1") == 0) {
+    } else if (strcmp(simSlot2, "1") == 0) {
         // SIM2
         mDevice->halSetParameters("g_call_sim_slot=0x02");
     }
+
     // INVALID, CURRENT, CNT, MAX are reserved for internal use.
     // TODO: remove the values from the HIDL interface
     switch (mode) {
@@ -358,7 +349,7 @@ Return<Result> PrimaryDevice::setBtHfpSampleRate(uint32_t sampleRateHz) {
     return mDevice->setParam(AUDIO_PARAMETER_KEY_HFP_SET_SAMPLING_RATE, int(sampleRateHz));
 }
 Return<Result> PrimaryDevice::setBtHfpVolume(float volume) {
-    if (!util::isGainNormalized(volume)) {
+    if (!isGainNormalized(volume)) {
         ALOGW("Can not set BT HFP volume (%f) outside [0,1]", volume);
         return Result::INVALID_ARGUMENTS;
     }
